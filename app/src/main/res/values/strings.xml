@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Kuma</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <!--splash screen-->
+    <string name="logokuma">Logo Kuma</string>
+    <string name="bottomcircle">Bottom Circle</string>
+
+    <!--login register-->
+    <string name="welcome">Welcome!</string>
+    <string name="login">LOGIN</string>
+    <string name="loginto">Login to Continue</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="dont_have">Don\'t have an Account? </string>
+    <string name="register_here"> Register Here</string>
+    <string name="create">Please create an account</string>
+    <string name="name">Name</string>
+    <string name="register">REGISTER</string>
 </resources>
