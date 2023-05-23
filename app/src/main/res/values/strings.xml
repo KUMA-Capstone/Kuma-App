@@ -16,4 +16,8 @@
     <string name="name">Name</string>
     <string name="register">REGISTER</string>
     <string name="have_acc">Already have an account?<font color="#2EC4B6"> Login Here</font></string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_report">Report</string>
+    <string name="title_profile">Profile</string>
 </resources>
