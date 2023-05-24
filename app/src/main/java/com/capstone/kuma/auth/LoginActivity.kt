@@ -9,6 +9,7 @@ import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.capstone.kuma.databinding.ActivityLoginBinding
+import com.capstone.kuma.layout.HomeActivity
 
 @Suppress("DEPRECATION")
 class LoginActivity : AppCompatActivity() {
@@ -25,7 +26,7 @@ class LoginActivity : AppCompatActivity() {
         binding.password.addTextChangedListener(textWatcher)
 
         binding.loginButton.setOnClickListener {
-            val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
+            val intent = Intent(this@LoginActivity, HomeActivity::class.java)
             startActivity(intent)
         }
 
