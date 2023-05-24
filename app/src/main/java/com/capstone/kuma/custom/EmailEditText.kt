@@ -11,13 +11,16 @@ import android.view.View
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.content.ContextCompat
 import com.capstone.kuma.R
+import java.util.regex.Pattern
 
-class PasswordEditText : AppCompatEditText, View.OnTouchListener {
+class EmailEditText : AppCompatEditText, View.OnTouchListener {
     private lateinit var clearButton: Drawable
     private lateinit var bgNormal: Drawable
     private lateinit var bgError: Drawable
     private var isError: Boolean = false
-    private var errorText: String = ""
+    private val errorEmailRequired: String by lazy {
+        context.getString(R.string.error_email_required)
+    }
 
     constructor(context: Context) : super(context) {
         init()
@@ -53,11 +56,9 @@ class PasswordEditText : AppCompatEditText, View.OnTouchListener {
 
             override fun afterTextChanged(s: Editable) {
                 if (s.toString().isEmpty()) {
-                    setErrorState(true, R.string.error_empty_password)
-                } else if (s.length < 8) {
-                    setErrorState(true, R.string.error_short_password)
+                    setErrorState(true)
                 } else {
-                    setErrorState(false)
+                    setErrorState(!isValidEmail(s.toString()))
                 }
             }
         })
@@ -91,7 +92,7 @@ class PasswordEditText : AppCompatEditText, View.OnTouchListener {
                         if (text != null) {
                             val isTextCleared = event.x > clearButtonStart && event.x < clearButtonEnd
                             if (isTextCleared) {
-                                setErrorState(true, R.string.error_empty_password)
+                                setErrorState(true)
                             } else {
                                 text?.clear()
                                 setErrorState(false)
@@ -129,17 +130,11 @@ class PasswordEditText : AppCompatEditText, View.OnTouchListener {
         )
     }
 
-    private fun setErrorState(hasError: Boolean, errorMessageResId: Int = 0) {
+    private fun setErrorState(hasError: Boolean) {
         isError = hasError
-        errorText = if (errorMessageResId != 0) {
-            context.getString(errorMessageResId)
-        } else {
-            ""
-        }
-
         background = if (hasError) {
             showErrorBackground()
-            error = errorText
+            error = errorEmailRequired
             bgError
         } else {
             showNormalBackground()
@@ -163,5 +158,18 @@ class PasswordEditText : AppCompatEditText, View.OnTouchListener {
         super.onDraw(canvas)
         textAlignment = View.TEXT_ALIGNMENT_VIEW_START
         background = if (isError) bgError else bgNormal
+    }
+
+    private fun isValidEmail(email: String): Boolean {
+        val emailPattern = Pattern.compile(
+            "[a-zA-Z0-9+._%\\-]{1,256}" +
+                    "@" +
+                    "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
+                    "(" +
+                    "\\." +
+                    "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
+                    ")+"
+        )
+        return emailPattern.matcher(email).matches()
     }
 }

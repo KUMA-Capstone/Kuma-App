@@ -75,7 +75,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView"
         tools:ignore="RtlSymmetry" />
 
-    <com.capstone.kuma.custom.EditText
+    <com.capstone.kuma.custom.EmailEditText
         android:id="@+id/email"
         android:layout_width="350dp"
         android:layout_height="wrap_content"

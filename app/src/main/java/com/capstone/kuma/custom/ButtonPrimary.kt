@@ -41,5 +41,6 @@ class ButtonPrimary: AppCompatButton {
         background = if (isEnabled) enabledBackgroundColor else disabledBackgroundColor
         textSize = 16f
         gravity = Gravity.CENTER
+        setTextColor(ContextCompat.getColor(context, android.R.color.white))
     }
 }

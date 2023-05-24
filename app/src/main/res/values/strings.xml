@@ -20,4 +20,8 @@
     <string name="title_home">Home</string>
     <string name="title_report">Report</string>
     <string name="title_profile">Profile</string>
+    <string name="error_name_required">Name cannot be empty</string>
+    <string name="error_email_required">Invalid email</string>
+    <string name="error_short_password">Password minimum 8 characters</string>
+    <string name="error_empty_password">Password cannot be empty</string>
 </resources>

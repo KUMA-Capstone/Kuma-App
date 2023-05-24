@@ -12,35 +12,52 @@ import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.content.ContextCompat
 import com.capstone.kuma.R
 
-class EditText: AppCompatEditText, View.OnTouchListener {
+class EditText : AppCompatEditText, View.OnTouchListener {
     private lateinit var clearButton: Drawable
-    private lateinit var bgColor: Drawable
+    private lateinit var bgNormal: Drawable
+    private lateinit var bgError: Drawable
+    private var isError: Boolean = false
+    private val errorNameRequired: String by lazy {
+        context.getString(R.string.error_name_required)
+    }
 
     constructor(context: Context) : super(context) {
         init()
     }
+
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         init()
     }
+
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
         init()
     }
 
     private fun init() {
         clearButton = ContextCompat.getDrawable(context, R.drawable.ic_close_24) as Drawable
-        bgColor = ContextCompat.getDrawable(context, R.drawable.bg_edit_text) as Drawable
+        bgNormal = ContextCompat.getDrawable(context, R.drawable.bg_edit_text_normal) as Drawable
+        bgError = ContextCompat.getDrawable(context, R.drawable.bg_edit_text_error) as Drawable
         setOnTouchListener(this)
 
         addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
                 // Do nothing.
             }
+
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 if (s.toString().isNotEmpty()) showClearButton() else hideClearButton()
+                if (isError) {
+                    if (s.toString().isNotEmpty()) {
+                        setErrorState(false)
+                    }
+                }
             }
+
             override fun afterTextChanged(s: Editable) {
                 if (s.toString().isEmpty()) {
-                    error = "Data harus diisi"
+                    setErrorState(true)
+                } else {
+                    setErrorState(false)
                 }
             }
         })
@@ -48,8 +65,8 @@ class EditText: AppCompatEditText, View.OnTouchListener {
 
     override fun onTouch(p0: View?, event: MotionEvent): Boolean {
         if (compoundDrawables[2] != null) {
-            val clearButtonStart: Float
-            val clearButtonEnd: Float
+            var clearButtonStart = 0.0f
+            var clearButtonEnd = 0.0f
             var isClearButtonClicked = false
             if (layoutDirection == View.LAYOUT_DIRECTION_RTL) {
                 clearButtonEnd = (clearButton.intrinsicWidth + paddingStart).toFloat()
@@ -71,8 +88,14 @@ class EditText: AppCompatEditText, View.OnTouchListener {
                     }
                     MotionEvent.ACTION_UP -> {
                         clearButton = ContextCompat.getDrawable(context, R.drawable.ic_close_24) as Drawable
-                        when {
-                            text != null -> text?.clear()
+                        if (text != null) {
+                            val isTextCleared = event.x > clearButtonStart && event.x < clearButtonEnd
+                            if (isTextCleared) {
+                                setErrorState(true)
+                            } else {
+                                text?.clear()
+                                setErrorState(false)
+                            }
                         }
                         hideClearButton()
                         return true
@@ -87,16 +110,17 @@ class EditText: AppCompatEditText, View.OnTouchListener {
     private fun showClearButton() {
         setButtonDrawables(endOfTheText = clearButton)
     }
+
     private fun hideClearButton() {
         setButtonDrawables()
     }
 
     private fun setButtonDrawables(
         startOfTheText: Drawable? = null,
-        topOfTheText:Drawable? = null,
-        endOfTheText:Drawable? = null,
+        topOfTheText: Drawable? = null,
+        endOfTheText: Drawable? = null,
         bottomOfTheText: Drawable? = null
-    ){
+    ) {
         setCompoundDrawablesWithIntrinsicBounds(
             startOfTheText,
             topOfTheText,
@@ -105,10 +129,33 @@ class EditText: AppCompatEditText, View.OnTouchListener {
         )
     }
 
+    private fun setErrorState(hasError: Boolean) {
+        isError = hasError
+        background = if (hasError) {
+            showErrorBackground()
+            error = errorNameRequired
+            bgError
+        } else {
+            showNormalBackground()
+            error = null
+            bgNormal
+        }
+    }
+
+    private fun showErrorBackground() {
+        val errorBackground = ContextCompat.getDrawable(context, R.drawable.bg_edit_text_error)
+        background = errorBackground
+    }
+
+    private fun showNormalBackground() {
+        val normalBackground = ContextCompat.getDrawable(context, R.drawable.bg_edit_text_normal)
+        background = normalBackground
+    }
+
     override fun onDraw(canvas: Canvas) {
-        setPadding(30, 4,40,4)
+        setPadding(30, 4, 40, 4)
         super.onDraw(canvas)
         textAlignment = View.TEXT_ALIGNMENT_VIEW_START
-        background = bgColor
+        background = if (isError) bgError else bgNormal
     }
 }
