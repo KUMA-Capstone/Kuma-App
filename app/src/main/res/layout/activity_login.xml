@@ -4,14 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     android:orientation="vertical"
-    tools:context=".auth.LoginActivity"
-    android:background="@color/background">
+    tools:context=".auth.LoginActivity">
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/circle"
@@ -28,57 +31,53 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
+        android:layout_marginTop="50dp"
         android:fontFamily="@font/bold"
-        android:paddingStart="30dp"
-        android:layout_marginTop="240dp"
         android:text="@string/welcome"
-        android:textSize="32sp"
-        app:layout_constraintStart_toStartOf="@+id/relativeLayout"
-        app:layout_constraintTop_toTopOf="@+id/relativeLayout"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
         tools:ignore="RtlSymmetry" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:fontFamily="@font/regular"
-        android:paddingStart="30dp"
-        android:layout_marginTop="280dp"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/medium"
         android:text="@string/loginto"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="@+id/relativeLayout"
-        app:layout_constraintTop_toTopOf="@+id/relativeLayout"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/email"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
         tools:ignore="RtlSymmetry" />
 
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="53dp"
         android:layout_height="66dp"
-        android:layout_marginTop="245dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginEnd="16dp"
         android:contentDescription="@string/logokuma"
         android:src="@drawable/ic_foreground"
-        app:layout_constraintEnd_toEndOf="@+id/relativeLayout"
-        app:layout_constraintTop_toTopOf="@+id/relativeLayout"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="@+id/email"
+        app:layout_constraintTop_toTopOf="@+id/textView4"
         tools:ignore="ImageContrastCheck" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/medium"
-        android:paddingStart="20dp"
+        android:fontFamily="@font/regular"
         android:paddingTop="20dp"
         android:text="@string/email"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/relativeLayout"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/email"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         tools:ignore="RtlSymmetry" />
 
     <com.capstone.kuma.custom.EditText
         android:id="@+id/email"
-        android:layout_width="370dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -90,31 +89,31 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/medium"
-        android:paddingStart="20dp"
+        android:fontFamily="@font/regular"
         android:paddingTop="20dp"
         android:text="@string/password"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/relativeLayout"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/email"
         tools:ignore="RtlSymmetry" />
 
     <com.capstone.kuma.custom.PasswordEditText
         android:id="@+id/password"
-        android:layout_width="370dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:minHeight="48dp"
         android:inputType="textPassword"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="@+id/relativeLayout"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
+        app:layout_constraintStart_toStartOf="@+id/relativeLayout"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <com.capstone.kuma.custom.ButtonPrimary
         android:id="@+id/login_button"
-        android:layout_width="256dp"
+        android:layout_width="200dp"
         android:layout_height="48dp"
         android:layout_marginTop="20dp"
+        android:enabled="false"
         android:text="@string/login"
         app:layout_constraintEnd_toEndOf="@+id/relativeLayout"
         app:layout_constraintStart_toStartOf="@+id/relativeLayout"
@@ -125,8 +124,8 @@
         android:id="@+id/to_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/dont_have"
         android:layout_marginTop="10dp"
+        android:text="@string/dont_have"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/relativeLayout"
         app:layout_constraintTop_toBottomOf="@+id/login_button" />

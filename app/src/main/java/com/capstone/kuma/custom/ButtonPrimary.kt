@@ -11,7 +11,8 @@ import com.capstone.kuma.R
 
 class ButtonPrimary: AppCompatButton {
     private var txtColor: Int = 0
-    private lateinit var backgroundColor: Drawable
+    private var enabledBackgroundColor: Drawable? = null
+    private var disabledBackgroundColor: Drawable? = null
 
     constructor(context: Context) : super(context) {
         init()
@@ -25,15 +26,20 @@ class ButtonPrimary: AppCompatButton {
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        background = backgroundColor
-
-        setTextColor(txtColor)
-        textSize = 12f
-        gravity = Gravity.CENTER
+        updateButton()
     }
 
     private fun init() {
         txtColor = ContextCompat.getColor(context, android.R.color.background_light)
-        backgroundColor = ContextCompat.getDrawable(context, R.drawable.bg_button) as Drawable
+        enabledBackgroundColor = ContextCompat.getDrawable(context, R.drawable.bg_en_button)
+        disabledBackgroundColor = ContextCompat.getDrawable(context, R.drawable.bg_dis_button)
+        updateButton()
+    }
+
+    private fun updateButton() {
+        val isEnabled = isEnabled
+        background = if (isEnabled) enabledBackgroundColor else disabledBackgroundColor
+        textSize = 16f
+        gravity = Gravity.CENTER
     }
 }
