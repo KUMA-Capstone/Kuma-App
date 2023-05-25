@@ -23,59 +23,111 @@
             android:scaleType="centerCrop"/>
     </RelativeLayout>
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="135dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="500dp"
+        android:scaleType="center"
+        android:src="@drawable/bg_home_button"
+        android:elevation="8dp"
+        android:outlineProvider="bounds"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/relativeLayout"
+        app:layout_constraintStart_toStartOf="@+id/relativeLayout"
+        app:layout_constraintTop_toTopOf="@id/relativeLayout" />
+
+    <ImageView
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:layout_marginBottom="100dp"
+        android:src="@drawable/bg_home_dot"
+        android:elevation="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="@+id/relativeLayout" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="24sp"
+        android:fontFamily="@font/bold"
+        android:text="@string/duckyan"
+        android:elevation="12dp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/profileImageView" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profileImageView"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginBottom="100dp"
+        android:src="@drawable/ic_photo_profile"
+        android:elevation="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="@+id/relativeLayout" />
+
     <com.capstone.kuma.custom.ButtonHome
         android:id="@+id/check_in"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
         android:drawableStart="@drawable/ic_check_in"
-        android:paddingStart="10dp"
         android:drawablePadding="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+        android:paddingStart="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <com.capstone.kuma.custom.ButtonHome
         android:id="@+id/woku_game"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:drawableStart="@drawable/ic_woku_game"
-        android:paddingStart="10dp"
         android:drawablePadding="20dp"
+        android:paddingStart="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/check_in"
+        app:layout_constraintStart_toStartOf="@+id/check_in"
         app:layout_constraintTop_toBottomOf="@+id/check_in" />
 
     <com.capstone.kuma.custom.ButtonHome
         android:id="@+id/breathing_exercise"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:drawableStart="@drawable/ic_breathing"
-        android:paddingStart="10dp"
         android:drawablePadding="20dp"
+        android:paddingStart="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/woku_game"
+        app:layout_constraintStart_toStartOf="@+id/woku_game"
         app:layout_constraintTop_toBottomOf="@+id/woku_game" />
 
     <com.capstone.kuma.custom.ButtonHome
         android:id="@+id/panic_button"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:drawableStart="@drawable/ic_panic"
-        android:paddingStart="10dp"
         android:drawablePadding="20dp"
+        android:paddingStart="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/breathing_exercise"
+        app:layout_constraintStart_toStartOf="@+id/breathing_exercise"
         app:layout_constraintTop_toBottomOf="@+id/breathing_exercise" />
 </androidx.constraintlayout.widget.ConstraintLayout>
