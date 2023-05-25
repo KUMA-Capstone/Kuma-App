@@ -11,7 +11,6 @@ import com.capstone.kuma.R
 import kotlin.math.round
 
 class ButtonHome: AppCompatButton {
-    private var txtColor: Int = 0
     private var backgroundColor: Drawable? = null
 
     constructor(context: Context) : super(context) {
@@ -30,15 +29,12 @@ class ButtonHome: AppCompatButton {
     }
 
     private fun init() {
-        txtColor = ContextCompat.getColor(context, android.R.color.background_light)
         backgroundColor = ContextCompat.getDrawable(context, R.drawable.bg_home_button)
         updateButton()
     }
 
     private fun updateButton() {
         background = backgroundColor
-        textSize = 16f
-        gravity = Gravity.CENTER
-        setTextColor(ContextCompat.getColor(context, android.R.color.white))
+        setTextColor(ContextCompat.getColor(context, android.R.color.black))
     }
 }

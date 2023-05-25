@@ -6,17 +6,172 @@
     android:layout_height="match_parent"
     tools:context=".layout.ui.profile.ProfileFragment">
 
-    <TextView
-        android:id="@+id/text_profile"
+    <ImageView
+        android:id="@+id/background_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/background"
+        android:src="@drawable/bg_profile"
+        android:layout_alignParentTop="true"
+        android:scaleType="centerCrop"/>
+
+    <RelativeLayout
+        android:id="@+id/relative"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profileImageView"
+            android:layout_width="113dp"
+            android:layout_height="113dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="120dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_photo_profile" />
+
+        <Button
+            android:id="@+id/changePhotoButton"
+            android:layout_width="30dp"
+            android:layout_height="36dp"
+            android:contentDescription="@string/title_profile"
+            android:layout_alignEnd="@id/profileImageView"
+            android:layout_alignBottom="@id/profileImageView"
+            android:backgroundTint="@color/primary"
+            android:drawableTop="@drawable/ic_change_photo" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/medium"
+        android:paddingTop="20dp"
+        android:text="@string/name"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/name_change"
+        app:layout_constraintTop_toBottomOf="@+id/relative"
+        tools:ignore="RtlSymmetry" />
+
+    <com.capstone.kuma.custom.NameChangeText
+        android:id="@+id/name_change"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/duckyan"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/relative"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/medium"
+        android:paddingTop="20dp"
+        android:text="@string/password"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/name_change"
+        tools:ignore="RtlSymmetry" />
+
+    <com.capstone.kuma.custom.PasswordChangeText
+        android:id="@+id/password"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:hint="@string/password"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="@+id/relative"
+        app:layout_constraintStart_toStartOf="@+id/relative"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <com.capstone.kuma.custom.ButtonPrimary
+        android:id="@+id/login_button"
+        android:layout_width="200dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:enabled="false"
+        android:text="@string/save_changes"
+        app:layout_constraintEnd_toEndOf="@+id/relative"
+        app:layout_constraintStart_toStartOf="@+id/relative"
+        app:layout_constraintTop_toBottomOf="@+id/password"
+        tools:ignore="TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/medium"
+        android:paddingTop="20dp"
+        android:text="@string/actions"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/login_button"
+        tools:ignore="RtlSymmetry" />
+
+    <com.capstone.kuma.custom.ButtonHome
+        android:id="@+id/emergency"
+        android:layout_marginTop="10dp"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:textSize="14sp"
+        android:textAlignment="viewStart"
+        android:drawablePadding="15dp"
+        android:fontFamily="@font/regular"
+        android:text="@string/emergency"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        android:drawableStart="@drawable/ic_emergency"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"/>
+
+    <com.capstone.kuma.custom.ButtonHome
+        android:id="@+id/report"
+        android:layout_marginTop="10dp"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:textSize="14sp"
+        android:textAlignment="viewStart"
+        android:drawablePadding="15dp"
+        android:fontFamily="@font/regular"
+        android:text="@string/report_problem"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emergency"
+        android:drawableStart="@drawable/ic_report_problem"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"/>
+
+    <com.capstone.kuma.custom.ButtonHome
+        android:id="@+id/logout"
+        android:layout_marginTop="10dp"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:textSize="14sp"
+        android:textAlignment="viewStart"
+        android:drawablePadding="15dp"
+        android:fontFamily="@font/regular"
+        android:text="@string/logout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/report"
+        android:drawableStart="@drawable/ic_logout"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

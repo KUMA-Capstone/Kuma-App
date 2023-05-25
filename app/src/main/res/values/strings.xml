@@ -16,12 +16,22 @@
     <string name="name">Name</string>
     <string name="register">REGISTER</string>
     <string name="have_acc">Already have an account?<font color="#2EC4B6"> Login Here</font></string>
-    <string name="title_activity_home">HomeActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_report">Report</string>
-    <string name="title_profile">Profile</string>
     <string name="error_name_required">Name cannot be empty</string>
     <string name="error_email_required">Invalid email</string>
     <string name="error_short_password">Password minimum 8 characters</string>
     <string name="error_empty_password">Password cannot be empty</string>
+
+    <!--home report profile-->
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_report">Report</string>
+    <string name="title_profile">Profile</string>
+    <string name="background">Background</string>
+    <string name="save_changes">Save Changes</string>
+    <string name="actions">Actions</string>
+    <string name="duckyan">Duck Yan</string>
+    <string name="emergency">Emergency Contact</string>
+    <string name="report_problem">Report a problem</string>
+    <string name="logout">Logout</string>
+
 </resources>
