@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
+    <color name="checkin">#017296</color>
+    <color name="woku">#574D70</color>
+    <color name="breath">#9EA2E3</color>
+    <color name="panic">#E63946</color>
     <color name="white">#FFFFFFFF</color>
     <color name="red">#FF0000</color>
     <color name="primary">#2EC4B6</color>

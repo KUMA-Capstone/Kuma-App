@@ -33,5 +33,13 @@
     <string name="emergency">Emergency Contact</string>
     <string name="report_problem">Report a problem</string>
     <string name="logout">Logout</string>
+    <string name="desc_checkin">Tell us how your experience was today in more detail and interesting</string>
+    <string name="check_in">Check In</string>
+    <string name="woku">Woku Game</string>
+    <string name="desc_woku">Woku can help you deal with your worries in a positive and creative way</string>
+    <string name="breath">Breathing Exercise</string>
+    <string name="desc_breath">Regulated breathing enhances lung function and reduces stress or anxiety</string>
+    <string name="panic">Panic Button</string>
+    <string name="desc_panic">Use in emergencies for immediate assistance</string>
 
 </resources>
