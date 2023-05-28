@@ -36,7 +36,7 @@ class NameChangeText: AppCompatEditText, View.OnTouchListener {
     private fun init() {
         clearButton = ContextCompat.getDrawable(context, R.drawable.ic_close_24) as Drawable
         bgNormal = ContextCompat.getDrawable(context, R.drawable.bg_change_name) as Drawable
-        bgError = ContextCompat.getDrawable(context, R.drawable.bg_edit_text_error) as Drawable
+        bgError = ContextCompat.getDrawable(context, R.drawable.bg_change_name_error) as Drawable
         setOnTouchListener(this)
 
         addTextChangedListener(object : TextWatcher {
@@ -143,7 +143,7 @@ class NameChangeText: AppCompatEditText, View.OnTouchListener {
     }
 
     private fun showErrorBackground() {
-        val errorBackground = ContextCompat.getDrawable(context, R.drawable.bg_edit_text_error)
+        val errorBackground = ContextCompat.getDrawable(context, R.drawable.bg_change_name_error)
         background = errorBackground
     }
 

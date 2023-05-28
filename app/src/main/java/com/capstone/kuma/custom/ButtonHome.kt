@@ -4,11 +4,9 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
-import android.view.Gravity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContextCompat
 import com.capstone.kuma.R
-import kotlin.math.round
 
 class ButtonHome: AppCompatButton {
     private var backgroundColor: Drawable? = null
@@ -30,11 +28,13 @@ class ButtonHome: AppCompatButton {
 
     private fun init() {
         backgroundColor = ContextCompat.getDrawable(context, R.drawable.bg_home_button)
+        isAllCaps = false
         updateButton()
     }
 
     private fun updateButton() {
         background = backgroundColor
+        textSize = 14f
         setTextColor(ContextCompat.getColor(context, android.R.color.black))
     }
 }
