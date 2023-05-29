@@ -42,4 +42,7 @@
     <string name="panic">Panic Button</string>
     <string name="desc_panic">Use in emergencies for immediate assistance</string>
 
+    <!--panic button-->
+    <string name="add_contact">Add an Emergency Contact</string>
+
 </resources>

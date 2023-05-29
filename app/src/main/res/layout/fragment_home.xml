@@ -90,7 +90,7 @@
         app:layout_constraintStart_toStartOf="@+id/imageView2"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
-    <com.capstone.kuma.custom.ButtonHome
+    <!--<com.capstone.kuma.custom.ButtonHome
         android:id="@+id/woku_game"
         android:layout_width="match_parent"
         android:layout_height="80dp"
@@ -102,9 +102,9 @@
         android:paddingStart="10dp"
         app:layout_constraintEnd_toEndOf="@+id/check_in"
         app:layout_constraintStart_toStartOf="@+id/check_in"
-        app:layout_constraintTop_toBottomOf="@+id/check_in" />
+        app:layout_constraintTop_toBottomOf="@+id/check_in" />-->
 
-    <com.capstone.kuma.custom.ButtonHome
+    <!--<com.capstone.kuma.custom.ButtonHome
         android:id="@+id/breathing_exercise"
         android:layout_width="match_parent"
         android:layout_height="80dp"
@@ -116,7 +116,7 @@
         android:paddingStart="10dp"
         app:layout_constraintEnd_toEndOf="@+id/woku_game"
         app:layout_constraintStart_toStartOf="@+id/woku_game"
-        app:layout_constraintTop_toBottomOf="@+id/woku_game" />
+        app:layout_constraintTop_toBottomOf="@+id/woku_game" />-->
 
     <com.capstone.kuma.custom.ButtonHome
         android:id="@+id/panic_button"
@@ -128,9 +128,9 @@
         android:drawableStart="@drawable/ic_panic"
         android:drawablePadding="20dp"
         android:paddingStart="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/breathing_exercise"
-        app:layout_constraintStart_toStartOf="@+id/breathing_exercise"
-        app:layout_constraintTop_toBottomOf="@+id/breathing_exercise" />
+        app:layout_constraintEnd_toEndOf="@+id/check_in"
+        app:layout_constraintStart_toStartOf="@+id/check_in"
+        app:layout_constraintTop_toBottomOf="@+id/check_in" />
 
     <TextView
         android:id="@+id/textView6"
@@ -159,7 +159,7 @@
         app:layout_constraintStart_toStartOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
-    <TextView
+    <!--<TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -173,9 +173,9 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/woku_game"
         app:layout_constraintStart_toStartOf="@+id/woku_game"
-        app:layout_constraintTop_toTopOf="@+id/woku_game" />
+        app:layout_constraintTop_toTopOf="@+id/woku_game" />-->
 
-    <TextView
+    <!--<TextView
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -184,9 +184,9 @@
         android:text="@string/desc_woku"
         app:layout_constraintBottom_toBottomOf="@+id/woku_game"
         app:layout_constraintStart_toStartOf="@+id/textView7"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintTop_toBottomOf="@+id/textView7" /> -->
 
-    <TextView
+    <!--<TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -200,9 +200,9 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/breathing_exercise"
         app:layout_constraintStart_toStartOf="@+id/breathing_exercise"
-        app:layout_constraintTop_toTopOf="@+id/breathing_exercise" />
+        app:layout_constraintTop_toTopOf="@+id/breathing_exercise" />-->
 
-    <TextView
+    <!--<TextView
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -211,7 +211,7 @@
         android:text="@string/desc_breath"
         app:layout_constraintBottom_toBottomOf="@+id/breathing_exercise"
         app:layout_constraintStart_toStartOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />-->
 
     <TextView
         android:id="@+id/textView9"
