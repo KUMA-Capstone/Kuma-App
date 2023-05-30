@@ -45,4 +45,7 @@
     <!--panic button-->
     <string name="add_contact">Add an Emergency Contact</string>
 
+    <!--check in-->
+    <string name="submood">Sub Mood</string>
+
 </resources>
