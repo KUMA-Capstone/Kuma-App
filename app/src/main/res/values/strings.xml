@@ -47,5 +47,7 @@
 
     <!--check in-->
     <string name="submood">Sub Mood</string>
+    <string name="complete_all_questions">Complete all questions</string>
+    <string name="finish">FINISH</string>
 
 </resources>

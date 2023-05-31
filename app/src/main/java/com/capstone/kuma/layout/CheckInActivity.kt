@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.MultiAutoCompleteTextView
 import android.widget.Spinner
+import androidx.core.content.ContextCompat
 import com.capstone.kuma.R
 import com.capstone.kuma.databinding.ActivityCheckInBinding
 
@@ -17,6 +18,7 @@ class CheckInActivity : AppCompatActivity() {
         binding = ActivityCheckInBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        window.statusBarColor = ContextCompat.getColor(this, R.color.primary)
 
         val list_submood = binding.subMood
         val dataSubMood = arrayListOf("angry","happy","sad","b aja")
