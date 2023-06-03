@@ -62,7 +62,7 @@
         android:id="@+id/name_change"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:hint="@string/duckyan"
+        android:hint="@string/name"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/relative"

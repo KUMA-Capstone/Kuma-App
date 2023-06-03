@@ -61,6 +61,9 @@ class ProfileFragment : Fragment() {
 
         setupButtonPrimary()
 
+        val editName: Editable? = mSessionPreference.getSession().name.let { Editable.Factory.getInstance().newEditable(it) }
+        binding.nameChange.text = editName
+
         binding.changePhotoButton.setOnClickListener {
             startGallery()
         }
