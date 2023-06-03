@@ -8,11 +8,19 @@ import android.util.Patterns
 import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import android.view.WindowManager
+import android.widget.Toast
+import androidx.activity.viewModels
+import com.capstone.kuma.ViewModelFactory
 import com.capstone.kuma.databinding.ActivityRegisterBinding
+import com.capstone.kuma.layout.HomeActivity
 
 @Suppress("DEPRECATION")
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
+    private val factory: ViewModelFactory = ViewModelFactory.getInstance(this)
+    private val authViewModel: AuthViewModel by viewModels{
+        factory
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,14 +28,29 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(binding.root)
         setFullScreen()
 
-        binding.buttonPrimary.isEnabled = false
+        binding.registerButton.isEnabled = false
         binding.name.addTextChangedListener(textWatcher)
         binding.email.addTextChangedListener(textWatcher)
         binding.password.addTextChangedListener(textWatcher)
 
-        binding.buttonPrimary.setOnClickListener {
-            val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
-            startActivity(intent)
+        binding.registerButton.setOnClickListener {
+            showLoading(true)
+            val name = binding.name.text.toString().trim()
+            val email = binding.email.text.toString().trim()
+            val password = binding.password.text.toString().trim()
+            authViewModel.registerLauncher(name, email, password).observe(this,{
+                if(it != null){
+                    Toast.makeText(this, "Register berhasil dilakukan", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
+                    showLoading(false)
+                    startActivity(intent)
+                }else{
+                    showLoading(false)
+                    Toast.makeText(this, "Mohon periksa kembali data yang dimasukkan", Toast.LENGTH_SHORT).show()
+                    finish()
+                    startActivity(intent)
+                }
+            })
         }
 
         binding.toLogin.setOnClickListener {
@@ -59,7 +82,7 @@ class RegisterActivity : AppCompatActivity() {
             val isPasswordValid = password.length >= 8
             val isInputValid = isNameValid && isEmailValid && isPasswordValid
 
-            binding.buttonPrimary.isEnabled = isInputValid
+            binding.registerButton.isEnabled = isInputValid
         }
 
         override fun afterTextChanged(s: Editable?) {
@@ -70,5 +93,13 @@ class RegisterActivity : AppCompatActivity() {
     private fun isValidEmail(email: String): Boolean {
         val emailPattern = Patterns.EMAIL_ADDRESS
         return emailPattern.matcher(email).matches()
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.loadingBar.visibility = View.VISIBLE
+        }else{
+            binding.loadingBar.visibility = View.GONE
+        }
     }
 }

@@ -7,13 +7,24 @@ import android.text.TextWatcher
 import android.util.Patterns
 import android.view.View
 import android.view.WindowManager
+import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.capstone.kuma.LoginSession
+import com.capstone.kuma.SessionPreference
+import com.capstone.kuma.ViewModelFactory
 import com.capstone.kuma.databinding.ActivityLoginBinding
 import com.capstone.kuma.layout.HomeActivity
 
 @Suppress("DEPRECATION")
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
+    private val factory: ViewModelFactory = ViewModelFactory.getInstance(this)
+    private val authViewModel: AuthViewModel by viewModels{
+        factory
+    }
+    private lateinit var mSessionPreference: SessionPreference
+    private lateinit var loginSession: LoginSession
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,19 +32,65 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
         setFullScreen()
 
+        mSessionPreference = SessionPreference(this)
+        if(mSessionPreference.getSession().name != ""){
+            val newLoginSession = mSessionPreference.getSession()
+            val intent = Intent(this@LoginActivity, HomeActivity::class.java)
+            intent.putExtra(HomeActivity.EXTRA_RESULT, newLoginSession)
+            startActivity(intent)
+            finish()
+        }
+
         binding.loginButton.isEnabled = false
         binding.email.addTextChangedListener(textWatcher)
         binding.password.addTextChangedListener(textWatcher)
 
         binding.loginButton.setOnClickListener {
-            val intent = Intent(this@LoginActivity, HomeActivity::class.java)
-            startActivity(intent)
+            showLoading(true)
+            val email = binding.email.text.toString().trim()
+            val password = binding.password.text.toString().trim()
+            authViewModel.loginLauncher(email, password).observe(this,{
+                if(it != null){
+                    if (it.error == true){
+                        showLoading(false)
+                        Toast.makeText(this, "${it.message}", Toast.LENGTH_SHORT).show()
+                    }else{
+                        saveSession(it.loginResult.name,it.loginResult.token)
+                    }
+                }else{
+                    showLoading(false)
+                    Toast.makeText(this, "Login gagal, Mohon periksa kembali data", Toast.LENGTH_SHORT).show()
+                    finish()
+                    startActivity(intent)
+                }
+            })
         }
 
         binding.toRegister.setOnClickListener {
             val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    private fun saveSession(name: String, token: String) {
+        mSessionPreference = SessionPreference(this)
+
+        loginSession = LoginSession()
+        loginSession.name = name
+        loginSession.token = token
+
+        mSessionPreference.setSession(loginSession)
+        moveToHome()
+    }
+
+    private fun moveToHome() {
+        mSessionPreference = SessionPreference(this)
+        val newLoginSession = mSessionPreference.getSession()
+        val intent = Intent(this@LoginActivity, HomeActivity::class.java)
+        Toast.makeText(this, "Welcome ${newLoginSession.name}", Toast.LENGTH_SHORT).show()
+        intent.putExtra(HomeActivity.EXTRA_RESULT, newLoginSession)
+        startActivity(intent)
+        finish()
     }
 
     private fun setFullScreen() {
@@ -67,5 +124,13 @@ class LoginActivity : AppCompatActivity() {
     private fun isValidEmail(email: String): Boolean {
         val emailPattern = Patterns.EMAIL_ADDRESS
         return emailPattern.matcher(email).matches()
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.loadingBar.visibility = View.VISIBLE
+        }else{
+            binding.loadingBar.visibility = View.GONE
+        }
     }
 }

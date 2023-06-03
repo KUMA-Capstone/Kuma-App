@@ -3,8 +3,9 @@ package com.capstone.kuma.layout.ui.report
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.capstone.kuma.repo.KumaRepository
 
-class ReportViewModel : ViewModel() {
+class ReportViewModel(private val kumaRepository: KumaRepository) : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is dashboard Fragment"

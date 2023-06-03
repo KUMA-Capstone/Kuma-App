@@ -11,12 +11,17 @@ import android.os.Environment
 import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import com.capstone.kuma.LoginSession
+import com.capstone.kuma.SessionPreference
+import com.capstone.kuma.auth.LoginActivity
 import com.capstone.kuma.custom.ButtonPrimary
 import com.capstone.kuma.databinding.FragmentProfileBinding
 import com.capstone.kuma.layout.PanicActivity
@@ -38,6 +43,9 @@ class ProfileFragment : Fragment() {
     private lateinit var nameEditText: EditText
     private lateinit var passwordEditText: EditText
     private lateinit var buttonPrimary: ButtonPrimary
+
+    private lateinit var mSessionPreference: SessionPreference
+    private lateinit var loginSession: LoginSession
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -62,7 +70,24 @@ class ProfileFragment : Fragment() {
             startActivity(intent)
         }
 
+        binding.logout.setOnClickListener {
+            logOut()
+        }
+
         return root
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mSessionPreference = SessionPreference(context)
+    }
+
+    private fun logOut() {
+        mSessionPreference.deleteSession()
+        Log.d(".HomeActivity", "lihat : ${mSessionPreference.getSession()}")
+        Toast.makeText(requireContext(), "Berhasil Logout", Toast.LENGTH_SHORT).show()
+        val moveToLogin = Intent(requireActivity(), LoginActivity::class.java)
+        startActivity(moveToLogin)
     }
 
     private fun startGallery() {

@@ -1,18 +1,28 @@
 package com.capstone.kuma.layout
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.capstone.kuma.LoginSession
 import com.capstone.kuma.R
+import com.capstone.kuma.SessionPreference
+import com.capstone.kuma.ViewModelFactory
 import com.capstone.kuma.databinding.ActivityHomeBinding
+import com.capstone.kuma.layout.ui.home.HomeViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
+    private lateinit var mSessionPreference: SessionPreference
+    private val factory: ViewModelFactory = ViewModelFactory.getInstance(this)
+    private val mHomeViewModel: HomeViewModel by viewModels{
+        factory
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,8 +36,14 @@ class HomeActivity : AppCompatActivity() {
 
         val navController = findNavController(R.id.nav_host_fragment_activity_home)
 
+        val loginSession = intent.getParcelableExtra<LoginSession>(EXTRA_RESULT) as LoginSession
+
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.nav_view)
         setupWithNavController(bottomNavigationView, navController)
         navView.setupWithNavController(navController)
+    }
+
+    companion object{
+        const val EXTRA_RESULT="extra_person"
     }
 }

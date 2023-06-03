@@ -34,9 +34,6 @@ class ReportFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val dashboardViewModel =
-            ViewModelProvider(this).get(ReportViewModel::class.java)
-
         _binding = FragmentReportBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
