@@ -49,5 +49,9 @@
     <string name="submood">Sub Mood</string>
     <string name="complete_all_questions">Complete all questions</string>
     <string name="finish">FINISH</string>
+    <string name="how_are_you_feeling_today">What is the current emotional state of your child</string>
+    <string name="what_will_be_your_chosen_activity">What activities is your child going to engage in</string>
+    <string name="type_here">Type here</string>
+    <string name="tell_us_in_more_detail_about_your_child_activities">Tell us in more detail about your child activities</string>
 
 </resources>
