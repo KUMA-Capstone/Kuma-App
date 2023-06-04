@@ -68,11 +68,6 @@ class ProfileFragment : Fragment() {
             startGallery()
         }
 
-        binding.emergency.setOnClickListener {
-            val intent = Intent(requireActivity(), PanicActivity::class.java)
-            startActivity(intent)
-        }
-
         binding.logout.setOnClickListener {
             logOut()
         }

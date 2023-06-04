@@ -2,6 +2,7 @@ package com.capstone.kuma.layout
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.ArrayAdapter
 import android.widget.MultiAutoCompleteTextView
 import android.widget.Spinner
@@ -39,5 +40,13 @@ class CheckInActivity : AppCompatActivity() {
         val adapterActivity = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, activity)
 
         list_activity.adapter = adapterActivity
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            finish()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

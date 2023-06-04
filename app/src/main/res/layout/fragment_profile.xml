@@ -118,42 +118,23 @@
         tools:ignore="RtlSymmetry" />
 
     <com.capstone.kuma.custom.ButtonHome
-        android:id="@+id/emergency"
-        android:layout_marginTop="10dp"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:textSize="14sp"
-        android:textAlignment="viewStart"
-        android:drawablePadding="15dp"
-        android:fontFamily="@font/regular"
-        android:text="@string/emergency"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        android:drawableStart="@drawable/ic_emergency"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"/>
-
-    <com.capstone.kuma.custom.ButtonHome
         android:id="@+id/report"
-        android:layout_marginTop="10dp"
         android:layout_width="350dp"
         android:layout_height="50dp"
         android:layout_marginStart="15dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="15dp"
-        android:textSize="14sp"
-        android:textAlignment="viewStart"
+        android:drawableStart="@drawable/ic_report_problem"
         android:drawablePadding="15dp"
         android:fontFamily="@font/regular"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
         android:text="@string/report_problem"
+        android:textAlignment="viewStart"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emergency"
-        android:drawableStart="@drawable/ic_report_problem"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"/>
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <com.capstone.kuma.custom.ButtonHome
         android:id="@+id/logout"
