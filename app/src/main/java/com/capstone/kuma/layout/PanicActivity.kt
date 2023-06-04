@@ -1,9 +1,9 @@
 package com.capstone.kuma.layout
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.ContactsContract
+import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import com.capstone.kuma.R
 import com.capstone.kuma.databinding.ActivityPanicBinding
@@ -15,15 +15,20 @@ class PanicActivity : AppCompatActivity() {
         binding = ActivityPanicBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        window.statusBarColor = ContextCompat.getColor(this, R.color.primary)
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.title = "Tips"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_back_white)
 
-        binding.panicButton.setOnClickListener {
-            val intent = Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI)
-            startActivity(intent)
-        }
+        window.statusBarColor = ContextCompat.getColor(this, R.color.primary)
     }
 
-    companion object {
-        private const val PICK_CONTACT_REQUEST_CODE = 1
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            finish()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

@@ -6,35 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".layout.PanicActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/primary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:titleTextAppearance="@style/ToolbarTitleText"
+        app:titleTextColor="@color/white" />
+
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottieAnimationView"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="250dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        app:lottie_rawRes="@raw/panic_animation"
+        app:lottie_rawRes="@raw/tips_animation"
         tools:ignore="ImageContrastCheck,MissingConstraints" />
-
-    <com.capstone.kuma.custom.ButtonHome
-        android:id="@+id/panic_button"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:drawableStart="@drawable/ic_add_call"
-        android:drawablePadding="20dp"
-        android:fontFamily="@font/medium"
-        android:paddingStart="10dp"
-        android:text="@string/add_contact"
-        android:textAlignment="textStart"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lottieAnimationView"
-        tools:ignore="RtlSymmetry,VisualLintButtonSize" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
