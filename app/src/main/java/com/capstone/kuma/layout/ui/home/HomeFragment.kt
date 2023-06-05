@@ -6,17 +6,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import com.capstone.kuma.LoginSession
 import com.capstone.kuma.SessionPreference
 import com.capstone.kuma.databinding.FragmentHomeBinding
 import com.capstone.kuma.layout.CheckInActivity
-import com.capstone.kuma.layout.HomeActivity
-import com.capstone.kuma.layout.HomeActivity.Companion.EXTRA_RESULT
-import com.capstone.kuma.layout.PanicActivity
+import com.capstone.kuma.layout.TipsActivity
 
 class HomeFragment : Fragment() {
 
@@ -36,7 +30,7 @@ class HomeFragment : Fragment() {
         val root: View = binding.root
 
         binding.panicButton.setOnClickListener {
-            val intent = Intent(requireActivity(), PanicActivity::class.java)
+            val intent = Intent(requireActivity(), TipsActivity::class.java)
             startActivity(intent)
         }
 

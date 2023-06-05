@@ -42,9 +42,6 @@
     <string name="panic">Panic Button</string>
     <string name="desc_panic">Use in emergencies for immediate assistance</string>
 
-    <!--panic button-->
-    <string name="add_contact">Add an Emergency Contact</string>
-
     <!--check in-->
     <string name="submood">Sub Mood</string>
     <string name="complete_all_questions">Complete all questions</string>
@@ -55,5 +52,20 @@
     <string name="tell_us_in_more_detail_about_your_child_activities">Tell us in more detail about your child activities</string>
     <string name="tips">Tips</string>
     <string name="autistic_children_s_parents_support_face_challenges_and_increase_development">Autistic Children\'s Parents Support face challenges and increase development</string>
+
+    <!--data tips title-->
+    <string-array name="tips_title">
+        <item>How to Raise Autistic Children with Loving Love</item>
+    </string-array>
+
+    <!--data tips desc-->
+    <string-array name="tips_desc">
+    <item>With its various features, Moms don\'t need to be discouraged. This is because they can grow up like any other child with the help of their parents and experts.</item>
+    </string-array>
+
+    <!--data tips img-->
+    <integer-array name="tips_img">
+        <item>@drawable/tips1</item>
+    </integer-array>
 
 </resources>

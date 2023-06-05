@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".layout.PanicActivity">
+    tools:context=".layout.TipsActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -18,7 +18,19 @@
         app:titleTextAppearance="@style/ToolbarTitleText"
         app:titleTextColor="@color/white" />
 
-    <com.airbnb.lottie.LottieAnimationView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ListTips"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingBottom="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        tools:listitem="@layout/list_tips" />
+
+<!--    <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottieAnimationView"
         android:layout_width="match_parent"
         android:layout_height="250dp"
@@ -28,6 +40,6 @@
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/tips_animation"
-        tools:ignore="ImageContrastCheck,MissingConstraints" />
+        tools:ignore="ImageContrastCheck,MissingConstraints" /> -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

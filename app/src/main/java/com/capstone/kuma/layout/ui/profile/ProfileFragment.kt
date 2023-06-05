@@ -8,7 +8,6 @@ import android.content.Intent.ACTION_GET_CONTENT
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
-import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -24,7 +23,6 @@ import com.capstone.kuma.SessionPreference
 import com.capstone.kuma.auth.LoginActivity
 import com.capstone.kuma.custom.ButtonPrimary
 import com.capstone.kuma.databinding.FragmentProfileBinding
-import com.capstone.kuma.layout.PanicActivity
 import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream
