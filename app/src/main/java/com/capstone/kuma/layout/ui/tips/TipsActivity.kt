@@ -1,4 +1,4 @@
-package com.capstone.kuma.layout
+package com.capstone.kuma.layout.ui.tips
 
 import android.annotation.SuppressLint
 import android.os.Bundle

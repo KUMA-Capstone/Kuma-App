@@ -1,4 +1,4 @@
-package com.capstone.kuma.layout
+package com.capstone.kuma.layout.ui.tips
 
 import android.os.Bundle
 import android.view.MenuItem

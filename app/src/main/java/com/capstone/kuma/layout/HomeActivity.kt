@@ -12,6 +12,7 @@ import com.capstone.kuma.R
 import com.capstone.kuma.SessionPreference
 import com.capstone.kuma.ViewModelFactory
 import com.capstone.kuma.databinding.ActivityHomeBinding
+import com.capstone.kuma.layout.ui.check_in.CheckInActivity.Companion.LOGIN_SESSION
 import com.capstone.kuma.layout.ui.home.HomeViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -36,7 +37,7 @@ class HomeActivity : AppCompatActivity() {
 
         val navController = findNavController(R.id.nav_host_fragment_activity_home)
 
-        val loginSession = intent.getParcelableExtra<LoginSession>(EXTRA_RESULT) as LoginSession
+        val loginSession = intent.getParcelableExtra<LoginSession>(LOGIN_SESSION) as LoginSession
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.nav_view)
         setupWithNavController(bottomNavigationView, navController)
@@ -44,6 +45,6 @@ class HomeActivity : AppCompatActivity() {
     }
 
     companion object{
-        const val EXTRA_RESULT="extra_person"
+        const val LOGIN_SESSION="extra_person"
     }
 }

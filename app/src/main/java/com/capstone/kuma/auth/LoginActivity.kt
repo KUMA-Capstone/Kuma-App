@@ -36,7 +36,7 @@ class LoginActivity : AppCompatActivity() {
         if(mSessionPreference.getSession().name != ""){
             val newLoginSession = mSessionPreference.getSession()
             val intent = Intent(this@LoginActivity, HomeActivity::class.java)
-            intent.putExtra(HomeActivity.EXTRA_RESULT, newLoginSession)
+            intent.putExtra(HomeActivity.LOGIN_SESSION, newLoginSession)
             startActivity(intent)
             finish()
         }
@@ -55,7 +55,7 @@ class LoginActivity : AppCompatActivity() {
                         showLoading(false)
                         Toast.makeText(this, "${it.message}", Toast.LENGTH_SHORT).show()
                     }else{
-                        saveSession(it.loginResult.name,it.loginResult.token)
+                        saveSession(it.loginResult.userId,it.loginResult.name,it.loginResult.token)
                     }
                 }else{
                     showLoading(false)
@@ -72,10 +72,11 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun saveSession(name: String, token: String) {
+    private fun saveSession(userId: String, name: String, token: String) {
         mSessionPreference = SessionPreference(this)
 
         loginSession = LoginSession()
+        loginSession.userId = userId
         loginSession.name = name
         loginSession.token = token
 
@@ -88,7 +89,7 @@ class LoginActivity : AppCompatActivity() {
         val newLoginSession = mSessionPreference.getSession()
         val intent = Intent(this@LoginActivity, HomeActivity::class.java)
         Toast.makeText(this, "Welcome ${newLoginSession.name}", Toast.LENGTH_SHORT).show()
-        intent.putExtra(HomeActivity.EXTRA_RESULT, newLoginSession)
+        intent.putExtra(HomeActivity.LOGIN_SESSION, newLoginSession)
         startActivity(intent)
         finish()
     }

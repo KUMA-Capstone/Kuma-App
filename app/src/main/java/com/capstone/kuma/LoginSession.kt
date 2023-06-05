@@ -7,6 +7,9 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class LoginSession (
+    @field:SerializedName("userId")
+    @Expose
+    var userId: String? = null,
     @field:SerializedName("name")
     @Expose
     var name: String? = null,

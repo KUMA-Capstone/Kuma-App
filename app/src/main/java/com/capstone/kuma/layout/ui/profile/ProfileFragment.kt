@@ -66,6 +66,23 @@ class ProfileFragment : Fragment() {
             startGallery()
         }
 
+        binding.report.setOnClickListener { view ->
+            val email = "c23.ps366@gmail.com"
+            val subject = "Hi, I got a problem"
+
+            val intent = Intent(Intent.ACTION_SEND).apply {
+                type = "text/plain"
+                putExtra(Intent.EXTRA_EMAIL, arrayOf(email))
+                putExtra(Intent.EXTRA_SUBJECT, subject)
+            }
+
+            if (intent.resolveActivity(view.context.packageManager) != null) {
+                view.context.startActivity(intent)
+            } else {
+                Toast.makeText(view.context, "No email app installed", Toast.LENGTH_SHORT).show()
+            }
+        }
+
         binding.logout.setOnClickListener {
             logOut()
         }

@@ -7,10 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.capstone.kuma.LoginSession
 import com.capstone.kuma.SessionPreference
 import com.capstone.kuma.databinding.FragmentHomeBinding
-import com.capstone.kuma.layout.CheckInActivity
-import com.capstone.kuma.layout.TipsActivity
+import com.capstone.kuma.layout.HomeActivity
+import com.capstone.kuma.layout.ui.check_in.CheckInActivity
+import com.capstone.kuma.layout.ui.tips.TipsActivity
 
 class HomeFragment : Fragment() {
 
@@ -38,8 +40,11 @@ class HomeFragment : Fragment() {
         binding.name.text = mSessionPreference.getSession().name
         Log.d("aaa", "nama : ${mSessionPreference.getSession().name}")
 
+        val loginSession = requireActivity().intent.getParcelableExtra<LoginSession>(HomeActivity.LOGIN_SESSION) as LoginSession
+
         binding.checkIn.setOnClickListener {
             val intent = Intent(requireActivity(), CheckInActivity::class.java)
+            intent.putExtra(CheckInActivity.LOGIN_SESSION, loginSession)
             startActivity(intent)
         }
 

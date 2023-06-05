@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.capstone.kuma.R
 import com.capstone.kuma.data.TipsItem
-import com.capstone.kuma.layout.TipsDetailActivity
+import com.capstone.kuma.layout.ui.tips.TipsDetailActivity
 
 class ListTipsAdapter(private val listTips: ArrayList<TipsItem>) : RecyclerView.Adapter<ListTipsAdapter.ListViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
