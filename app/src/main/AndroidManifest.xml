@@ -15,9 +15,12 @@
         android:theme="@style/Theme.Kuma"
         tools:targetApi="31">
         <activity
-            android:name=".layout.CheckInActivity"
-            android:windowSoftInputMode="adjustPan"
+            android:name=".layout.TipsDetailActivity"
             android:exported="false" />
+        <activity
+            android:name=".layout.CheckInActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".layout.TipsActivity"
             android:exported="false" />

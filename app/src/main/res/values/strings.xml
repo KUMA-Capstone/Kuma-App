@@ -56,16 +56,51 @@
     <!--data tips title-->
     <string-array name="tips_title">
         <item>How to Raise Autistic Children with Loving Love</item>
+        <item>The Right Way to Educate and Raise Autistic Children</item>
+        <item>How to Accompany Autistic Children Effectively</item>
     </string-array>
 
     <!--data tips desc-->
     <string-array name="tips_desc">
-    <item>With its various features, Moms don\'t need to be discouraged. This is because they can grow up like any other child with the help of their parents and experts.</item>
+        <item>Raising a child with autism can be a unique and rewarding experience that requires patience,
+            understanding, and, most importantly, unconditional love. Autism spectrum disorder (ASD) is a
+            developmental condition that affects social interactions, communication, and behavior. As parents,
+            it is crucial to create a nurturing and supportive environment that enables autistic children to
+            thrive and reach their full potential. This essay aims to explore effective strategies for raising
+            autistic children with love, empathy, and compassion. Raising autistic children with love requires a
+            commitment to understanding, acceptance, and support. By embracing unconditional love, fostering effective
+            communication, creating a structured environment, practicing empathy, supporting individualized education,
+            and fostering social connections, parents can provide the loving care that autistic children need to thrive.
+            With patience, understanding, and a deep well of love, we can empower autistic individuals to reach their full
+            potential and lead fulfilling lives.</item>
+
+        <item>Raising and educating autistic children require a compassionate and individualized approach that recognizes
+            their unique needs and abilities. Autism spectrum disorder (ASD) is a developmental condition that affects social
+            interaction, communication, and behavior. As parents and educators, it is crucial to adopt effective strategies
+            that promote the holistic development of autistic children. This essay explores key principles and practices that
+            can help in providing the right education and support for autistic children. Educating and raising autistic children
+            require an approach that respects their individuality, fosters their strengths, and supports their challenges.
+            By embracing neurodiversity, implementing individualized education plans, utilizing structured and visual supports,
+            promoting communication and social skills, creating sensory-friendly environments, fostering collaboration and inclusion,
+            and focusing on strengths and interests, we can provide the right education and support for autistic children. With these
+            principles and practices, we can empower them to reach their full potential and lead fulfilling lives. </item>
+
+        <item>Accompanying autistic children requires a deep understanding, empathy, and tailored support. Autism spectrum
+            disorder (ASD) is a developmental condition that affects social interaction, communication, and behavior.
+            As caregivers, educators, and individuals involved in the lives of autistic children, it is essential to implement
+            effective strategies that promote their well-being, development, and inclusion. This essay explores key approaches
+            and techniques for effectively accompanying autistic children. Effectively accompanying autistic children requires a
+            comprehensive approach that encompasses empathy, clear communication, predictable routines, sensory-friendly environments,
+            individualized support, social engagement, and self-advocacy. By implementing these strategies, we can create inclusive
+            and supportive environments that nurture their unique strengths, promote their well-being, and help them reach their
+            full potential. Ultimately, effective companionship empowers autistic children to lead fulfilling and meaningful lives. </item>
     </string-array>
 
     <!--data tips img-->
     <integer-array name="tips_img">
-        <item>@drawable/tips1</item>
+        <item>@drawable/img_tips1</item>
+        <item>@drawable/img_tips2</item>
+        <item>@drawable/img_tips3</item>
     </integer-array>
 
 </resources>
