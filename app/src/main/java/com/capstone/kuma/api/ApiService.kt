@@ -12,6 +12,7 @@ import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Part
+import retrofit2.http.Path
 import java.util.Date
 
 data class RegisterResponse(
@@ -57,6 +58,13 @@ data class UploadResponse(
     val message: String
 )
 
+data class UpdateResponse(
+    @SerializedName("error")
+    val error: Boolean,
+    @SerializedName("message")
+    val message: String
+)
+
 interface ApiService{
     @FormUrlEncoded
     @POST("/api/register")
@@ -88,8 +96,11 @@ interface ApiService{
         @Part("story") story: RequestBody,
     ): Call<UploadResponse>
 
-    @PUT("api/update_data/{id}")
-    fun update(
-
-    )
+    @FormUrlEncoded
+    @PUT("api/update-user")
+    fun updateData(
+        @Field("userId") userId: String,
+        @Field("name") name: String,
+        @Field("password") password: String
+    ) : Call<UpdateResponse>
 }

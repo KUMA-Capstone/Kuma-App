@@ -3,10 +3,13 @@ package com.capstone.kuma.repo
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.capstone.kuma.LoginSession
+import com.capstone.kuma.SessionPreference
 import com.capstone.kuma.api.ApiConfig
 import com.capstone.kuma.api.ApiService
 import com.capstone.kuma.api.LoginResponse
 import com.capstone.kuma.api.RegisterResponse
+import com.capstone.kuma.api.UpdateResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -14,6 +17,8 @@ import retrofit2.Response
 class KumaRepository(private val apiService: ApiService) {
     val registerResponse = MutableLiveData<RegisterResponse?>()
     val loginResponse = MutableLiveData<LoginResponse?>()
+    private lateinit var loginSession: LoginSession
+    private lateinit var mSessionPreference: SessionPreference
 
     fun registerLauncherRepo(name:String, email: String, password:String) {
         Log.d(".RegisterActivity", "$name, $email, $password")
@@ -76,6 +81,47 @@ class KumaRepository(private val apiService: ApiService) {
 
     fun getLoginResponse(): LiveData<LoginResponse?> {
         return loginResponse
+    }
+
+    fun updateData(userId: String, name: String, password: String) {
+        loginSession = LoginSession()
+        val updateCall = ApiConfig.getApiService().updateData(userId, name, password)
+
+        Log.d("apa ya", "$userId, $name, $password")
+        updateCall.enqueue(object : Callback<UpdateResponse> {
+            override fun onResponse(
+                call: Call<UpdateResponse>,
+                response: Response<UpdateResponse>
+            ) {
+                val responseStatus = response.code()
+                Log.d(".ProfileFragment", "Response status: $responseStatus")
+
+                if (response.isSuccessful) {
+                    val responseBody = response.body()
+                    if (responseBody != null && !responseBody.error) {
+                        Log.d(".ProfileFragment", "Data updated successfully: $responseBody")
+
+                        val currentLoginResponse = loginResponse.value
+                        if (currentLoginResponse != null) {
+                            val currentLoginResult = currentLoginResponse.loginResult
+                            val updatedLoginResult = currentLoginResult.copy(name = name)
+                            val updatedLoginResponse =
+                                currentLoginResponse.copy(loginResult = updatedLoginResult)
+                            loginResponse.postValue(updatedLoginResponse)
+                        }
+
+                    } else {
+                        Log.e(".ProfileFragment", "Failed to update data: ${responseBody?.message}")
+                    }
+                } else {
+                    Log.e(".ProfileFragment", "Failed to update data: ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<UpdateResponse>, t: Throwable) {
+                Log.e(".ProfileFragment", "Update data failed", t)
+            }
+        })
     }
 
     companion object {

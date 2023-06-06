@@ -5,6 +5,7 @@ import android.content.Context
 internal class SessionPreference(context: Context) {
     companion object{
         private const val PREFS_NAME ="login_session"
+        private const val USERID ="userid"
         private const val NAME ="name"
         private const val TOKEN ="token"
     }
@@ -13,6 +14,7 @@ internal class SessionPreference(context: Context) {
 
     fun setSession(session: LoginSession){
         val edit = preferences.edit()
+        edit.putString(USERID, session.userId)
         edit.putString(NAME, session.name)
         edit.putString(TOKEN, session.token)
         edit.apply()
@@ -20,6 +22,7 @@ internal class SessionPreference(context: Context) {
 
     fun getSession(): LoginSession{
         val model = LoginSession()
+        model.userId = preferences.getString(USERID, "")
         model.name = preferences.getString(NAME, "")
         model.token = preferences.getString(TOKEN, "")
 

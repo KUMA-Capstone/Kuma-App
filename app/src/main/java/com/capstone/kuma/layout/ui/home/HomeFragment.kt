@@ -7,8 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.capstone.kuma.LoginSession
 import com.capstone.kuma.SessionPreference
+import com.capstone.kuma.ViewModelFactory
 import com.capstone.kuma.databinding.FragmentHomeBinding
 import com.capstone.kuma.layout.HomeActivity
 import com.capstone.kuma.layout.ui.check_in.CheckInActivity

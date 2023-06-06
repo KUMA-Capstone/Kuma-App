@@ -94,7 +94,7 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <com.capstone.kuma.custom.ButtonPrimary
-        android:id="@+id/login_button"
+        android:id="@+id/update_button"
         android:layout_width="200dp"
         android:layout_height="48dp"
         android:layout_marginTop="20dp"
@@ -114,7 +114,7 @@
         android:text="@string/actions"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/login_button"
+        app:layout_constraintTop_toBottomOf="@+id/update_button"
         tools:ignore="RtlSymmetry" />
 
     <com.capstone.kuma.custom.ButtonHome
