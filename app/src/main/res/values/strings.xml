@@ -43,7 +43,7 @@
     <string name="desc_panic">Use in emergencies for immediate assistance</string>
 
     <!--check in-->
-    <string name="submood">Sub Mood</string>
+    <string name="activity">Activity</string>
     <string name="complete_all_questions">Complete all questions</string>
     <string name="finish">FINISH</string>
     <string name="how_are_you_feeling_today">What is the current emotional state of your child</string>

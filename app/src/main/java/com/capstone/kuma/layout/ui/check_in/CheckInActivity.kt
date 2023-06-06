@@ -9,6 +9,7 @@ import android.text.TextWatcher
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.MultiAutoCompleteTextView
@@ -17,6 +18,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
+import androidx.core.view.isNotEmpty
 import com.capstone.kuma.LoginSession
 import com.capstone.kuma.R
 import com.capstone.kuma.api.ApiConfig
@@ -24,22 +26,18 @@ import com.capstone.kuma.api.UploadResponse
 import com.capstone.kuma.custom.ButtonPrimary
 import com.capstone.kuma.databinding.ActivityCheckInBinding
 import com.capstone.kuma.layout.HomeActivity
-import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.text.SimpleDateFormat
-import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
 class CheckInActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCheckInBinding
-    private lateinit var list_activity: Spinner
-
-    private lateinit var submood: MultiAutoCompleteTextView
-    private lateinit var activities: Spinner
+    private lateinit var list_submood: Spinner
+    private lateinit var submood: Spinner
+    private lateinit var activities: MultiAutoCompleteTextView
     private lateinit var story: EditText
     private lateinit var buttonPrimary: ButtonPrimary
 
@@ -57,16 +55,16 @@ class CheckInActivity : AppCompatActivity() {
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_back_white)
         window.statusBarColor = ContextCompat.getColor(this, R.color.primary)
 
-        val list_submood = binding.subMood
-        val dataSubMood = arrayListOf("angry","happy","sad","b aja")
-        val adapterSubMood = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, dataSubMood)
-        list_submood.setAdapter(adapterSubMood)
-        list_submood.setTokenizer(MultiAutoCompleteTextView.CommaTokenizer())
+        val list_activity = binding.listActivity
+        val dataActivity = arrayListOf("Reading and Learning","Spiritual","Social","Physical and Travel", "Self-pleasure and Entertainment", "Creative", "Home")
+        val adapterActivity = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, dataActivity)
+        list_activity.setAdapter(adapterActivity)
+        list_activity.setTokenizer(MultiAutoCompleteTextView.CommaTokenizer())
 
-        list_activity = binding.listActivity
-        val activity = arrayOf("Reading and Learning","Spiritual", "Berak")
-        val adapterActivity = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, activity)
-        list_activity.adapter = adapterActivity
+        list_submood = binding.subMood
+        val dataSubMood = arrayOf("Angry", "Awful",  "Bad", "Blessed", "Chill", "Confused", "Cool", "Excited", "Focused", "Good", "Happiest Day", "Hungry", "Meh", "Over the Moon", "Sad Af", "Scared", "Sick", "Triggered", "Weak", "Wondering", "Worried", "Yolo")
+        val adapterSubMood = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, dataSubMood)
+        list_submood.adapter = adapterSubMood
 
         submood = binding.subMood
         activities = binding.listActivity
@@ -80,24 +78,25 @@ class CheckInActivity : AppCompatActivity() {
         binding.finishCheckin.setOnClickListener {startUpload(loginSession)}
     }
 
+    fun getCurrentDate(): String {
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val currentDate = Date()
+        return dateFormat.format(currentDate)
+    }
     private fun startUpload(loginSession: LoginSession){
-//        val currentDate = Calendar.getInstance().time
-//        val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
-//        val dateNow = dateFormat.parse(currentDate.toString())
-        val dateNow = Date().toString()
-        val sub_mood = binding.subMood.text.toString().toRequestBody("text/plain".toMediaType())
-        val listActivity = binding.listActivity.onItemSelectedListener.toString().toRequestBody("text/plain".toMediaType())
-        val story = binding.story.text.toString().toRequestBody("text/plain".toMediaType())
+        val dateNow = getCurrentDate()
+        val listActivity = binding.listActivity.text.toString()
+        val sub_mood = binding.subMood.selectedItem as String
+        val story = binding.story.text.toString()
 
-        val uploadCheckIn = ApiConfig.getApiService().upload("Bearer ${loginSession.token}", dateNow, sub_mood, listActivity, story)
 
-        Log.d("isi upload", "${loginSession.token}, ${loginSession.userId}, $dateNow, $sub_mood, $listActivity, $story")
+        val uploadCheckIn = ApiConfig.getApiService().upload("Bearer ${loginSession.token}", "${loginSession.userId}", dateNow, sub_mood, "[$listActivity]", story)
+
         uploadCheckIn.enqueue(object : Callback<UploadResponse> {
             override fun onResponse(
                 call: Call<UploadResponse>,
                 response: Response<UploadResponse>
             ) {
-                Log.d("response nya", "$response")
                 if (response.isSuccessful) {
                     val responseBody = response.body()
                     if (responseBody != null) {
@@ -146,18 +145,18 @@ class CheckInActivity : AppCompatActivity() {
             }
         }
 
-        submood.addTextChangedListener(textWatcher)
+        activities.addTextChangedListener(textWatcher)
         story.addTextChangedListener(textWatcher)
 
         updateButtonPrimaryState()
     }
 
     private fun updateButtonPrimaryState() {
-        val submood = submood.text.toString().trim()
-        val activities = activities.onItemSelectedListener.toString().trim()
+        val activity = activities.text.toString().trim()
+        val subMood = submood.onItemSelectedListener.toString().trim()
         val story = story.text.toString().trim()
 
-        val isButtonEnabled = submood.isNotEmpty() && activities.isNotEmpty() && story.isNotEmpty()
+        val isButtonEnabled = subMood.isNotEmpty() && activity.isNotEmpty() && story.isNotEmpty()
         buttonPrimary.isEnabled = isButtonEnabled
     }
 

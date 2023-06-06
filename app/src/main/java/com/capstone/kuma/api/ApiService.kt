@@ -55,7 +55,30 @@ data class UploadResponse(
     @field:SerializedName("error")
     val error: Boolean,
     @field:SerializedName("message")
-    val message: String
+    val message: String,
+    @field:SerializedName("uploadResult")
+    val uploadResult: uploadResult,
+)
+
+data class uploadResult(
+    @field:SerializedName("id")
+    @Expose
+    val id: Int,
+    @field:SerializedName("date")
+    @Expose
+    val date: String,
+    @field:SerializedName("sub_mood")
+    @Expose
+    val sub_mood: String,
+    @field:SerializedName("activities")
+    @Expose
+    val activities: String,
+    @field:SerializedName("story")
+    @Expose
+    val story: String,
+    @field:SerializedName("userId")
+    @Expose
+    val userId: String
 )
 
 data class UpdateResponse(
@@ -86,14 +109,15 @@ interface ApiService{
 
     )
 
-    @Multipart
+    @FormUrlEncoded
     @POST("api/new-mood-entry")
     fun upload(
         @Header("Authorization") Authorization:String,
-        @Part("date") date: String,
-        @Part("sub_mood") sub_mood: RequestBody,
-        @Part("activities") activities: RequestBody,
-        @Part("story") story: RequestBody,
+        @Field("userId") userId: String,
+        @Field("date") date: String,
+        @Field("sub_mood") sub_mood: String,
+        @Field("activities") activities: String,
+        @Field("story") story: String,
     ): Call<UploadResponse>
 
     @FormUrlEncoded

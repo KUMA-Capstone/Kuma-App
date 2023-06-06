@@ -66,17 +66,14 @@
                 app:layout_constraintStart_toStartOf="@+id/sub_mood"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <MultiAutoCompleteTextView
+            <Spinner
                 android:id="@+id/sub_mood"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:completionThreshold="1"
-                android:hint="@string/submood"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView7"
-                tools:ignore="TextContrastCheck,TouchTargetSizeCheck,VisualLintTextFieldSize" />
+                tools:ignore="TouchTargetSizeCheck" />
 
             <TextView
                 android:id="@+id/textView8"
@@ -89,14 +86,18 @@
                 app:layout_constraintStart_toStartOf="@+id/sub_mood"
                 app:layout_constraintTop_toBottomOf="@+id/sub_mood" />
 
-            <Spinner
+            <MultiAutoCompleteTextView
                 android:id="@+id/list_activity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:completionThreshold="1"
+                android:hint="@string/activity"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView8"
                 app:layout_constraintTop_toBottomOf="@+id/textView8"
-                tools:ignore="TouchTargetSizeCheck" />
+                tools:ignore="TextContrastCheck,TouchTargetSizeCheck,VisualLintTextFieldSize" />
+
 
             <TextView
                 android:id="@+id/textView10"
