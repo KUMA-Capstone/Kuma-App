@@ -1,14 +1,9 @@
 package com.capstone.kuma.layout.ui.profile
 
 import android.annotation.SuppressLint
-import android.app.Activity.RESULT_OK
-import android.content.ContentResolver
 import android.content.Context
 import android.content.Intent
-import android.content.Intent.ACTION_GET_CONTENT
-import android.net.Uri
 import android.os.Bundle
-import android.os.Environment
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -17,7 +12,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import com.capstone.kuma.LoginSession
 import com.capstone.kuma.SessionPreference
@@ -27,15 +21,6 @@ import com.capstone.kuma.custom.ButtonPrimary
 import com.capstone.kuma.databinding.FragmentProfileBinding
 import com.capstone.kuma.layout.HomeActivity
 import com.capstone.kuma.repo.KumaRepository
-import java.io.File
-import java.io.FileOutputStream
-import java.io.InputStream
-import java.io.OutputStream
-import java.text.SimpleDateFormat
-import java.util.Locale
-
-private const val FILENAME_FORMAT = "dd-MMM-yyyy"
-val timeStamp: String = SimpleDateFormat(FILENAME_FORMAT, Locale.US).format(System.currentTimeMillis())
 
 class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
@@ -69,10 +54,6 @@ class ProfileFragment : Fragment() {
 
         val editName: Editable? = mSessionPreference.getSession().name.let { Editable.Factory.getInstance().newEditable(it) }
         binding.nameChange.text = editName
-
-        binding.changePhotoButton.setOnClickListener {
-            startGallery()
-        }
 
         binding.report.setOnClickListener { view ->
             val email = "c23.ps366@gmail.com"
@@ -146,46 +127,6 @@ class ProfileFragment : Fragment() {
         Toast.makeText(requireContext(), "Berhasil Logout", Toast.LENGTH_SHORT).show()
         val moveToLogin = Intent(requireActivity(), LoginActivity::class.java)
         startActivity(moveToLogin)
-    }
-
-    private fun startGallery() {
-        val intent = Intent()
-        intent.action = ACTION_GET_CONTENT
-        intent.type = "image/*"
-        val chooser = Intent.createChooser(intent, "Choose a Picture")
-        launcherIntentGallery.launch(chooser)
-    }
-
-    private val launcherIntentGallery = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult()
-    ) { result ->
-        if (result.resultCode == RESULT_OK) {
-            val selectedImg = result.data?.data as Uri
-            selectedImg.let { uri ->
-                val myFile = uriToFile(uri, requireActivity())
-                binding.profileImageView.setImageURI(uri)
-            }
-        }
-    }
-
-    fun uriToFile(selectedImg: Uri, context: Context): File {
-        val contentResolver: ContentResolver = context.contentResolver
-        val myFile = createCustomTempFile(context)
-
-        val inputStream = contentResolver.openInputStream(selectedImg) as InputStream
-        val outputStream: OutputStream = FileOutputStream(myFile)
-        val buf = ByteArray(1024)
-        var len: Int
-        while (inputStream.read(buf).also { len = it } > 0) outputStream.write(buf, 0, len)
-        outputStream.close()
-        inputStream.close()
-
-        return myFile
-    }
-
-    private fun createCustomTempFile(context: Context): File {
-        val storageDir: File? = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-        return File.createTempFile(timeStamp, ".jpg", storageDir)
     }
 
     private fun setupButtonPrimary() {

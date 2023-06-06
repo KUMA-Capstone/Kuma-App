@@ -18,9 +18,10 @@
             android:id="@+id/background_home"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/bg_home"
             android:layout_alignParentTop="true"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_home"
+            tools:ignore="ContentDescription,ImageContrastCheck" />
     </RelativeLayout>
 
     <ImageView
@@ -38,7 +39,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/relativeLayout"
         app:layout_constraintStart_toStartOf="@+id/relativeLayout"
-        app:layout_constraintTop_toTopOf="@id/relativeLayout" />
+        app:layout_constraintTop_toTopOf="@id/relativeLayout"
+        tools:ignore="ContentDescription" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -50,7 +52,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toTopOf="@+id/relativeLayout" />
+        app:layout_constraintTop_toTopOf="@+id/relativeLayout"
+        tools:ignore="ContentDescription,ImageContrastCheck" />
 
     <TextView
         android:id="@+id/name"
@@ -65,17 +68,20 @@
         app:layout_constraintStart_toStartOf="@+id/imageView2"
         app:layout_constraintTop_toBottomOf="@+id/profileImageView" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/profileImageView"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
         android:layout_marginBottom="100dp"
-        android:src="@drawable/ic_photo_profile"
         android:elevation="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toTopOf="@+id/relativeLayout" />
+        app:layout_constraintTop_toTopOf="@+id/relativeLayout"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/profile_animation"
+        tools:ignore="ImageContrastCheck" />
 
     <com.capstone.kuma.custom.ButtonHome
         android:id="@+id/check_in"
@@ -89,7 +95,8 @@
         android:paddingStart="10dp"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        tools:ignore="RtlSymmetry,SpeakableTextPresentCheck,VisualLintButtonSize" />
 
     <!--<com.capstone.kuma.custom.ButtonHome
         android:id="@+id/woku_game"
@@ -131,7 +138,8 @@
         android:paddingStart="10dp"
         app:layout_constraintEnd_toEndOf="@+id/check_in"
         app:layout_constraintStart_toStartOf="@+id/check_in"
-        app:layout_constraintTop_toBottomOf="@+id/check_in" />
+        app:layout_constraintTop_toBottomOf="@+id/check_in"
+        tools:ignore="RtlSymmetry,SpeakableTextPresentCheck,VisualLintButtonSize" />
 
     <TextView
         android:id="@+id/textView6"
@@ -158,7 +166,8 @@
         android:text="@string/desc_checkin"
         app:layout_constraintBottom_toBottomOf="@+id/check_in"
         app:layout_constraintStart_toStartOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        tools:ignore="TextSizeCheck" />
 
     <!--<TextView
         android:id="@+id/textView7"
@@ -228,7 +237,8 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/panic_button"
         app:layout_constraintStart_toStartOf="@+id/panic_button"
-        app:layout_constraintTop_toTopOf="@+id/panic_button" />
+        app:layout_constraintTop_toTopOf="@+id/panic_button"
+        tools:ignore="TextContrastCheck" />
 
     <TextView
         android:layout_width="250dp"
@@ -239,6 +249,7 @@
         android:text="@string/autistic_children_s_parents_support_face_challenges_and_increase_development"
         app:layout_constraintBottom_toBottomOf="@+id/panic_button"
         app:layout_constraintStart_toStartOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+        app:layout_constraintTop_toBottomOf="@+id/textView9"
+        tools:ignore="TextSizeCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
