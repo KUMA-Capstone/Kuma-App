@@ -36,6 +36,7 @@ class LoginActivity : AppCompatActivity() {
         if(mSessionPreference.getSession().name != ""){
             val newLoginSession = mSessionPreference.getSession()
             val intent = Intent(this@LoginActivity, HomeActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
             intent.putExtra(HomeActivity.LOGIN_SESSION, newLoginSession)
             startActivity(intent)
             finish()
@@ -60,8 +61,8 @@ class LoginActivity : AppCompatActivity() {
                 }else{
                     showLoading(false)
                     Toast.makeText(this, "Login gagal, Mohon periksa kembali data", Toast.LENGTH_SHORT).show()
-                    finish()
                     startActivity(intent)
+                    finish()
                 }
             })
         }

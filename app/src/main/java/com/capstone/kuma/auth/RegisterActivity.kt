@@ -44,11 +44,12 @@ class RegisterActivity : AppCompatActivity() {
                     val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
                     showLoading(false)
                     startActivity(intent)
+                    finish()
                 }else{
                     showLoading(false)
                     Toast.makeText(this, "Mohon periksa kembali data yang dimasukkan", Toast.LENGTH_SHORT).show()
-                    finish()
                     startActivity(intent)
+                    finish()
                 }
             })
         }

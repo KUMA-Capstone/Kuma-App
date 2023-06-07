@@ -1,6 +1,10 @@
 package com.capstone.kuma.layout
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -11,6 +15,7 @@ import com.capstone.kuma.LoginSession
 import com.capstone.kuma.R
 import com.capstone.kuma.SessionPreference
 import com.capstone.kuma.ViewModelFactory
+import com.capstone.kuma.auth.LoginActivity
 import com.capstone.kuma.databinding.ActivityHomeBinding
 import com.capstone.kuma.layout.ui.check_in.CheckInActivity.Companion.LOGIN_SESSION
 import com.capstone.kuma.layout.ui.home.HomeViewModel
@@ -23,6 +28,17 @@ class HomeActivity : AppCompatActivity() {
     private val factory: ViewModelFactory = ViewModelFactory.getInstance(this)
     private val mHomeViewModel: HomeViewModel by viewModels{
         factory
+    }
+    private var doubleBackToExitPressedOnce = false
+
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed()
+            return
+        }
+        this.doubleBackToExitPressedOnce = true
+        Toast.makeText(this, "Please click back again to exit", Toast.LENGTH_SHORT).show()
+        Handler(Looper.getMainLooper()).postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

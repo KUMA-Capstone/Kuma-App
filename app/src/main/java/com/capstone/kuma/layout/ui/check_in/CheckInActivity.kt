@@ -60,6 +60,14 @@ class CheckInActivity : AppCompatActivity() {
         val adapterActivity = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, dataActivity)
         list_activity.setAdapter(adapterActivity)
         list_activity.setTokenizer(MultiAutoCompleteTextView.CommaTokenizer())
+        list_activity.setOnFocusChangeListener { _, hasFocus ->
+            if (!hasFocus) {
+                val inputText = list_activity.text.toString()
+                val trimmedText = inputText.trimEnd(',', ' ')
+                val newText = trimmedText.replace(",", ",")
+                list_activity.setText(newText)
+            }
+        }
 
         list_submood = binding.subMood
         val dataSubMood = arrayOf("Angry", "Awful",  "Bad", "Blessed", "Chill", "Confused", "Cool", "Excited", "Focused", "Good", "Happiest Day", "Hungry", "Meh", "Over the Moon", "Sad Af", "Scared", "Sick", "Triggered", "Weak", "Wondering", "Worried", "Yolo")
@@ -89,19 +97,22 @@ class CheckInActivity : AppCompatActivity() {
         val sub_mood = binding.subMood.selectedItem as String
         val story = binding.story.text.toString()
 
+        val newList = listActivity.replace(",", " |")
 
-        val uploadCheckIn = ApiConfig.getApiService().upload("Bearer ${loginSession.token}", "${loginSession.userId}", dateNow, sub_mood, "[$listActivity]", story)
+        Log.d("slicedlist", "$newList")
+        val uploadCheckIn = ApiConfig.getApiService().upload("Bearer ${loginSession.token}", "${loginSession.userId}", dateNow, sub_mood, newList, story)
 
         uploadCheckIn.enqueue(object : Callback<UploadResponse> {
             override fun onResponse(
                 call: Call<UploadResponse>,
                 response: Response<UploadResponse>
             ) {
+                Log.d("response", "$response")
                 if (response.isSuccessful) {
                     val responseBody = response.body()
                     if (responseBody != null) {
                         showLoading(false)
-                        Toast.makeText(this@CheckInActivity, responseBody.message, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@CheckInActivity, "Thank you for filling in today", Toast.LENGTH_SHORT).show()
                         val intent = Intent(this@CheckInActivity, HomeActivity::class.java)
                         Log.d("CheckIn", "Berhasil woi")
                         intent.putExtra(HomeActivity.LOGIN_SESSION, loginSession)
@@ -111,7 +122,7 @@ class CheckInActivity : AppCompatActivity() {
                 }else{
                     showLoading(false)
                     Log.d("CheckIn", "Gagal woi")
-                    Toast.makeText(this@CheckInActivity, response.message(), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@CheckInActivity, "Sorry, you've finished filling in today", Toast.LENGTH_SHORT).show()
                 }
             }
             override fun onFailure(call: Call<UploadResponse>, t: Throwable) {

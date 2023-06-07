@@ -2,6 +2,7 @@ package com.capstone.kuma.api
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.Field
@@ -88,6 +89,13 @@ data class UpdateResponse(
     val message: String
 )
 
+data class FileUploadResponse(
+    @field:SerializedName("error")
+    val error: Boolean,
+    @field:SerializedName("message")
+    val message: String
+)
+
 interface ApiService{
     @FormUrlEncoded
     @POST("/api/register")
@@ -127,4 +135,11 @@ interface ApiService{
         @Field("name") name: String,
         @Field("password") password: String
     ) : Call<UpdateResponse>
+
+    @Multipart
+    @POST("api/user-image")
+    fun uploadImage(
+        @Header("Authorization") Authorization: String,
+        @Part file: MultipartBody.Part
+    ): Call<FileUploadResponse>
 }
