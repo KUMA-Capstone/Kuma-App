@@ -3,6 +3,10 @@ package com.capstone.kuma.repo
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.liveData
 import com.capstone.kuma.LoginSession
 import com.capstone.kuma.SessionPreference
 import com.capstone.kuma.api.ApiConfig
@@ -10,6 +14,8 @@ import com.capstone.kuma.api.ApiService
 import com.capstone.kuma.api.LoginResponse
 import com.capstone.kuma.api.RegisterResponse
 import com.capstone.kuma.api.UpdateResponse
+import com.capstone.kuma.api.moodResult
+import com.capstone.kuma.data.MoodPagingSource
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -122,6 +128,17 @@ class KumaRepository(private val apiService: ApiService) {
                 Log.e(".ProfileFragment", "Update data failed", t)
             }
         })
+    }
+
+    fun getMood(loginSession: LoginSession): LiveData<PagingData<moodResult>>{
+        return Pager(
+            config = PagingConfig(
+                pageSize = 5
+            ),
+            pagingSourceFactory = {
+                MoodPagingSource(apiService, loginSession)
+            }
+        ).liveData
     }
 
     companion object {

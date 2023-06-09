@@ -1,7 +1,9 @@
 package com.capstone.kuma.api
 
+import android.os.Parcelable
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -14,6 +16,7 @@ import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Part
 import retrofit2.http.Path
+import retrofit2.http.Query
 import java.util.Date
 
 data class RegisterResponse(
@@ -96,6 +99,40 @@ data class FileUploadResponse(
     val message: String
 )
 
+data class MoodResponse(
+    @field:SerializedName("error")
+    val error: Boolean,
+    @field:SerializedName("message")
+    val message: String,
+    @field:SerializedName("moodResult")
+    val moodResult: List<moodResult>
+)
+
+@Parcelize
+data class moodResult(
+    @field:SerializedName("id")
+    @Expose
+    val id: Int,
+    @field:SerializedName("userId")
+    @Expose
+    val userId: String,
+    @field:SerializedName("date")
+    @Expose
+    val date: String,
+    @field:SerializedName("sub_mood")
+    @Expose
+    val sub_mood: String,
+    @field:SerializedName("activities")
+    @Expose
+    val activities: String,
+    @field:SerializedName("story")
+    @Expose
+    val story: String,
+    @field:SerializedName("created_at")
+    @Expose
+    val created_at: Date
+): Parcelable
+
 interface ApiService{
     @FormUrlEncoded
     @POST("/api/register")
@@ -111,11 +148,6 @@ interface ApiService{
         @Field("email") email: String,
         @Field("password") password: String
     ): Call<LoginResponse>
-
-    @GET("/api/getallmoods")
-    fun getAllMoods(
-
-    )
 
     @FormUrlEncoded
     @POST("api/new-mood-entry")
@@ -142,4 +174,11 @@ interface ApiService{
         @Header("Authorization") Authorization: String,
         @Part file: MultipartBody.Part
     ): Call<FileUploadResponse>
+
+    @GET("api/get-mood-byId")
+    suspend fun getMoodByID(
+        @Header("Authorization") Authorization: String,
+        @Query("page") page: Int?,
+        @Query("size") size: Int?
+    ): MoodResponse
 }

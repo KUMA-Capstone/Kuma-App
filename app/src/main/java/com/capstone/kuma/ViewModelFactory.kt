@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.capstone.kuma.auth.AuthViewModel
+import com.capstone.kuma.layout.ui.history.HistoryViewModel
 import com.capstone.kuma.layout.ui.home.HomeViewModel
 import com.capstone.kuma.layout.ui.profile.ProfileViewModel
 import com.capstone.kuma.layout.ui.report.ReportViewModel
@@ -21,7 +22,12 @@ class ViewModelFactory private constructor(private val kumaRepository: KumaRepos
         else if(modelClass.isAssignableFrom(ReportViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
             return ReportViewModel(kumaRepository) as T
-        }else if(modelClass.isAssignableFrom(AuthViewModel::class.java)) {
+        }
+        else if(modelClass.isAssignableFrom(HistoryViewModel::class.java)) {
+            @Suppress("UNCHECKED_CAST")
+            return HistoryViewModel(kumaRepository) as T
+        }
+        else if(modelClass.isAssignableFrom(AuthViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
             return AuthViewModel(kumaRepository) as T
         }

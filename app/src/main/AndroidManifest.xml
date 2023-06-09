@@ -15,6 +15,12 @@
         android:theme="@style/Theme.Kuma"
         tools:targetApi="31">
         <activity
+            android:name=".layout.ui.history.HistoryDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".layout.ui.history.HistoryActivity"
+            android:exported="false" />
+        <activity
             android:name=".layout.ui.tips.TipsDetailActivity"
             android:exported="false" />
         <activity

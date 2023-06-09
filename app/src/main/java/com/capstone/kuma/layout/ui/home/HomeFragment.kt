@@ -7,12 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import com.capstone.kuma.LoginSession
 import com.capstone.kuma.SessionPreference
-import com.capstone.kuma.ViewModelFactory
 import com.capstone.kuma.databinding.FragmentHomeBinding
 import com.capstone.kuma.layout.HomeActivity
+import com.capstone.kuma.layout.ui.history.HistoryActivity
 import com.capstone.kuma.layout.ui.check_in.CheckInActivity
 import com.capstone.kuma.layout.ui.tips.TipsActivity
 
@@ -33,11 +32,6 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        binding.panicButton.setOnClickListener {
-            val intent = Intent(requireActivity(), TipsActivity::class.java)
-            startActivity(intent)
-        }
-
         mSessionPreference = SessionPreference(requireContext())
         binding.name.text = mSessionPreference.getSession().name
         Log.d("aaa", "nama : ${mSessionPreference.getSession().name}")
@@ -47,6 +41,17 @@ class HomeFragment : Fragment() {
         binding.checkIn.setOnClickListener {
             val intent = Intent(requireActivity(), CheckInActivity::class.java)
             intent.putExtra(CheckInActivity.LOGIN_SESSION, loginSession)
+            startActivity(intent)
+        }
+
+        binding.tipsButton.setOnClickListener {
+            val intent = Intent(requireActivity(), TipsActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.history.setOnClickListener {
+            val intent = Intent(requireActivity(), HistoryActivity::class.java)
+            intent.putExtra(HistoryActivity.LOGIN_SESSION, loginSession)
             startActivity(intent)
         }
 
