@@ -6,10 +6,13 @@
     <color name="breath">#9EA2E3</color>
     <color name="panic">#E63946</color>
     <color name="tips">#E59D1F</color>
+    <color name="history">#0DB561</color>
     <color name="grey">#DADADA</color>
     <color name="white">#FFFFFFFF</color>
     <color name="red">#FF0000</color>
     <color name="primary">#2EC4B6</color>
+    <color name="secondary">#C6F77F</color>
     <color name="disable">#AFDEDA</color>
+    <color name="historyact">#2f4c48</color>
     <color name="background">#F9F9F9</color>
 </resources>

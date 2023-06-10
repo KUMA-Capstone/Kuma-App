@@ -15,6 +15,7 @@ import com.capstone.kuma.layout.ui.history.HistoryActivity
 import com.capstone.kuma.layout.ui.check_in.CheckInActivity
 import com.capstone.kuma.layout.ui.tips.TipsActivity
 
+@Suppress("DEPRECATION")
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
