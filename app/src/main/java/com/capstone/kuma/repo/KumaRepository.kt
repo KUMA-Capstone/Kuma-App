@@ -1,6 +1,8 @@
 package com.capstone.kuma.repo
 
 import android.util.Log
+import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.Pager
@@ -12,15 +14,18 @@ import com.capstone.kuma.SessionPreference
 import com.capstone.kuma.api.ApiConfig
 import com.capstone.kuma.api.ApiService
 import com.capstone.kuma.api.LoginResponse
+import com.capstone.kuma.api.MoodResponse
 import com.capstone.kuma.api.RegisterResponse
 import com.capstone.kuma.api.UpdateResponse
 import com.capstone.kuma.api.moodResult
+import com.capstone.kuma.api.signinResult
 import com.capstone.kuma.data.MoodPagingSource
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class KumaRepository(private val apiService: ApiService) {
+    val reportData = MutableLiveData<List<moodResult>>()
     val registerResponse = MutableLiveData<RegisterResponse?>()
     val loginResponse = MutableLiveData<LoginResponse?>()
     private lateinit var loginSession: LoginSession
@@ -109,10 +114,10 @@ class KumaRepository(private val apiService: ApiService) {
 
                         val currentLoginResponse = loginResponse.value
                         if (currentLoginResponse != null) {
-                            val currentLoginResult = currentLoginResponse.loginResult
+                            val currentLoginResult = currentLoginResponse.signinResult
                             val updatedLoginResult = currentLoginResult.copy(name = name)
                             val updatedLoginResponse =
-                                currentLoginResponse.copy(loginResult = updatedLoginResult)
+                                currentLoginResponse.copy(signinResult = updatedLoginResult)
                             loginResponse.postValue(updatedLoginResponse)
                         }
 
@@ -139,6 +144,36 @@ class KumaRepository(private val apiService: ApiService) {
                 MoodPagingSource(apiService, loginSession)
             }
         ).liveData
+    }
+
+    fun setPrediction(loginSession: LoginSession){
+        Log.d("tokenpredict", "${loginSession.token}")
+        val prediction = ApiConfig.getApiService().getPredict("Bearer ${loginSession.token}", null, null)
+        prediction.enqueue(object : Callback<MoodResponse> {
+            override fun onResponse(
+                call: Call<MoodResponse>,
+                response: Response<MoodResponse>
+            ) {
+                Log.d("response", "$response")
+                if (response.isSuccessful) {
+                    val responseBody = response.body()
+                    if (responseBody != null && !responseBody.error) {
+                        reportData.postValue(responseBody.moodResult)
+                        Log.d("ReportFragment", "Berhasil woi")
+                    }
+                }else{
+                    Log.d("ReportFragment", "Gagal woi")
+                }
+            }
+            override fun onFailure(call: Call<MoodResponse>, t: Throwable) {
+                Log.d("ReportFragment", "Failure woi")
+                Log.d("response", "$t")
+            }
+        })
+    }
+
+    fun getPrediction(): LiveData<List<moodResult>>{
+        return reportData
     }
 
     companion object {

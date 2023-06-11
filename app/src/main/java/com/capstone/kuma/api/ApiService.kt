@@ -35,12 +35,12 @@ data class LoginResponse(
     @field:SerializedName("message")
     @Expose
     val message: String,
-    @field:SerializedName("loginResult")
+    @field:SerializedName("signinResult")
     @Expose
-    val loginResult: LoginResult,
+    val signinResult: signinResult,
 )
 
-data class LoginResult(
+data class signinResult(
     @field:SerializedName("userId")
     @Expose
     val userId: String,
@@ -128,6 +128,9 @@ data class moodResult(
     @field:SerializedName("story")
     @Expose
     val story: String,
+    @field:SerializedName("prediction")
+    @Expose
+    val prediction: Float,
     @field:SerializedName("created_at")
     @Expose
     val created_at: Date
@@ -181,4 +184,11 @@ interface ApiService{
         @Query("page") page: Int?,
         @Query("size") size: Int?
     ): MoodResponse
+
+    @GET("api/get-mood-byId")
+    fun getPredict(
+        @Header("Authorization") Authorization: String,
+        @Query("page") page: Int?,
+        @Query("size") size: Int?
+    ): Call<MoodResponse>
 }
