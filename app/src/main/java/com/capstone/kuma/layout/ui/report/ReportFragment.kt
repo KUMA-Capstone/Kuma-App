@@ -1,51 +1,26 @@
 package com.capstone.kuma.layout.ui.report
 
+import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import android.widget.Toast
-import androidx.activity.viewModels
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
-import com.capstone.kuma.LoginSession
-import com.capstone.kuma.R
 import com.capstone.kuma.SessionPreference
 import com.capstone.kuma.ViewModelFactory
-import com.capstone.kuma.api.ApiConfig
-import com.capstone.kuma.api.MoodResponse
-import com.capstone.kuma.api.UploadResponse
-import com.capstone.kuma.api.moodResult
 import com.capstone.kuma.databinding.FragmentReportBinding
-import com.capstone.kuma.layout.HomeActivity
-import com.capstone.kuma.layout.ui.check_in.CheckInActivity
 import com.capstone.kuma.layout.ui.report.ReportFragment.Global.averagePrediction
 import com.capstone.kuma.layout.ui.report.ReportFragment.Global.predictionCount
 import com.capstone.kuma.layout.ui.report.ReportFragment.Global.totalPrediction
-import com.capstone.kuma.repo.KumaRepository
 import com.github.mikephil.charting.charts.BarChart
-import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
-import com.github.mikephil.charting.data.Entry
-import com.github.mikephil.charting.data.LineData
-import com.github.mikephil.charting.data.LineDataSet
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.text.SimpleDateFormat
-import java.util.Calendar
-import java.util.Date
-import java.util.concurrent.TimeUnit
 
 class ReportFragment : Fragment() {
 
@@ -72,6 +47,7 @@ class ReportFragment : Fragment() {
         factory  = ViewModelFactory.getInstance(context)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -143,7 +119,7 @@ class ReportFragment : Fragment() {
             Global.isAverageCalculated = true
 
             val bardataSet = BarDataSet(barentries, "Mood Level")
-            bardataSet.setColor(Color.rgb(46, 196, 182))
+            bardataSet.color = Color.rgb(46, 196, 182)
             val barData = BarData(bardataSet)
             barchart.data = barData
             barchart.invalidate()
@@ -160,14 +136,5 @@ class ReportFragment : Fragment() {
         }else{
             binding.loadingBar.visibility = View.GONE
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-
-    }
-
-    companion object{
-        const val LOGIN_SESSION = "login_session"
     }
 }

@@ -33,7 +33,7 @@
     <string name="emergency">Emergency Contact</string>
     <string name="report_problem">Report a problem</string>
     <string name="logout">Logout</string>
-    <string name="desc_checkin">Tell us how your experience was today in more detail and interesting</string>
+    <string name="desc_checkin">Describe your day today in an intriguing and detailed manner</string>
     <string name="check_in">Check In</string>
     <string name="woku">Woku Game</string>
     <string name="desc_woku">Woku can help you deal with your worries in a positive and creative way</string>
@@ -42,7 +42,7 @@
     <string name="panic">Panic Button</string>
     <string name="desc_panic">Use in emergencies for immediate assistance</string>
     <string name="tips">Tips</string>
-    <string name="autistic_children_s_parents_support_face_challenges_and_increase_development">Autistic Children\'s Parents Support face challenges and increase development</string>
+    <string name="autistic_children_s_parents_support_face_challenges_and_increase_development">Parental support increases the development of autistic children</string>
     <string name="history">History</string>
     <string name="desc_history">Contains data regarding check in history that has been done</string>
 

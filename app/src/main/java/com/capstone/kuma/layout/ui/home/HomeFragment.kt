@@ -1,5 +1,6 @@
 package com.capstone.kuma.layout.ui.home
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -15,6 +16,7 @@ import com.capstone.kuma.layout.ui.history.HistoryActivity
 import com.capstone.kuma.layout.ui.check_in.CheckInActivity
 import com.capstone.kuma.layout.ui.report.ReportFragment
 import com.capstone.kuma.layout.ui.tips.TipsActivity
+import java.text.DecimalFormat
 
 @Suppress("DEPRECATION")
 class HomeFragment : Fragment() {
@@ -23,6 +25,7 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var mSessionPreference: SessionPreference
 
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -38,7 +41,8 @@ class HomeFragment : Fragment() {
         binding.name.text = mSessionPreference.getSession().name
         Log.d("aaa", "nama : ${mSessionPreference.getSession().name}")
 
-        binding.predict.text = ReportFragment.Global.averagePrediction.toString()
+        val decimalFormat = DecimalFormat("#.##")
+        binding.predict.text = decimalFormat.format(ReportFragment.Global.averagePrediction)
         if(ReportFragment.Global.averagePrediction<1.0){
             binding.mood.text = "Very Poor"
         }else if(ReportFragment.Global.averagePrediction<2.0){
