@@ -31,6 +31,7 @@ internal class SessionPreference(context: Context) {
 
     fun deleteSession(){
         val edit = preferences.edit()
-        edit.clear().apply()
+        edit.clear()
+        edit.apply()
     }
 }

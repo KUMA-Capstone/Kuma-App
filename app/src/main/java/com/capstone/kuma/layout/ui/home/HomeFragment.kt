@@ -13,6 +13,7 @@ import com.capstone.kuma.databinding.FragmentHomeBinding
 import com.capstone.kuma.layout.HomeActivity
 import com.capstone.kuma.layout.ui.history.HistoryActivity
 import com.capstone.kuma.layout.ui.check_in.CheckInActivity
+import com.capstone.kuma.layout.ui.report.ReportFragment
 import com.capstone.kuma.layout.ui.tips.TipsActivity
 
 @Suppress("DEPRECATION")
@@ -36,6 +37,19 @@ class HomeFragment : Fragment() {
         mSessionPreference = SessionPreference(requireContext())
         binding.name.text = mSessionPreference.getSession().name
         Log.d("aaa", "nama : ${mSessionPreference.getSession().name}")
+
+        binding.predict.text = ReportFragment.Global.averagePrediction.toString()
+        if(ReportFragment.Global.averagePrediction<1.0){
+            binding.mood.text = "Very Poor"
+        }else if(ReportFragment.Global.averagePrediction<2.0){
+            binding.mood.text = "Poor"
+        }else if(ReportFragment.Global.averagePrediction<3.0){
+            binding.mood.text = "Neutral"
+        }else if(ReportFragment.Global.averagePrediction<4.0){
+            binding.mood.text = "Good"
+        }else if(ReportFragment.Global.averagePrediction<5.0){
+            binding.mood.text = "Very Good"
+        }
 
         val loginSession = requireActivity().intent.getParcelableExtra<LoginSession>(HomeActivity.LOGIN_SESSION) as LoginSession
 

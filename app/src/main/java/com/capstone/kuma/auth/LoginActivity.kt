@@ -56,7 +56,7 @@ class LoginActivity : AppCompatActivity() {
                         showLoading(false)
                         Toast.makeText(this, "${it.message}", Toast.LENGTH_SHORT).show()
                     }else{
-                        saveSession(it.loginResult.userId,it.loginResult.name,it.loginResult.token)
+                        saveSession(it.signinResult.userId,it.signinResult.name,it.signinResult.token)
                     }
                 }else{
                     showLoading(false)

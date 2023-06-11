@@ -92,6 +92,7 @@ class CheckInActivity : AppCompatActivity() {
         return dateFormat.format(currentDate)
     }
     private fun startUpload(loginSession: LoginSession){
+        showLoading(true)
         val dateNow = getCurrentDate()
         val listActivity = binding.listActivity.text.toString()
         val sub_mood = binding.subMood.selectedItem as String
@@ -114,7 +115,7 @@ class CheckInActivity : AppCompatActivity() {
                         showLoading(false)
                         Toast.makeText(this@CheckInActivity, "Thank you for filling in today", Toast.LENGTH_SHORT).show()
                         val intent = Intent(this@CheckInActivity, HomeActivity::class.java)
-                        Log.d("CheckIn", "Berhasil woi")
+                        Log.d("CheckIn", "$responseBody")
                         intent.putExtra(HomeActivity.LOGIN_SESSION, loginSession)
                         startActivity(intent)
                         finish()
@@ -127,7 +128,7 @@ class CheckInActivity : AppCompatActivity() {
             }
             override fun onFailure(call: Call<UploadResponse>, t: Throwable) {
                 showLoading(false)
-                Log.d("CheckIn", "Failure woi")
+                Log.d("CheckIn", "$t")
                 Toast.makeText(this@CheckInActivity, "Error when Check In", Toast.LENGTH_SHORT).show()
             }
         })

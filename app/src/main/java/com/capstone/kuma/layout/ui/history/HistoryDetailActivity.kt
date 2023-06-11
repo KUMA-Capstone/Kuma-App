@@ -27,7 +27,6 @@ class HistoryDetailActivity : AppCompatActivity() {
         binding.submood.text = history.sub_mood
         binding.activity.text = history.activities
         binding.story.text = history.story
-
         showLoading(false)
     }
 
