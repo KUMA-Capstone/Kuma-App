@@ -7,19 +7,158 @@
     android:padding="16dp"
     tools:context=".layout.ui.report.ReportFragment">
 
-    <LinearLayout
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/barchart"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="350dp"
+        android:layout_margin="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <com.github.mikephil.charting.charts.BarChart
-            android:id="@+id/barchart"
-            android:layout_width="match_parent"
-            android:layout_height="350dp"
-            android:layout_margin="16dp"
-            android:layout_marginBottom="20dp" />
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/bold"
+        android:text="@string/overview"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/barchart" />
 
-    </LinearLayout>
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/medium"
+        android:text="Mood Level"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/textView21"
+        app:layout_constraintTop_toBottomOf="@+id/textView21"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textSize="16sp"
+        android:fontFamily="@font/medium"
+        android:text="@string/colon"
+        app:layout_constraintBottom_toBottomOf="@+id/textView19"
+        app:layout_constraintStart_toEndOf="@+id/textView19"
+        app:layout_constraintTop_toTopOf="@+id/textView19" />
+
+    <TextView
+        android:id="@+id/moodlevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/medium"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView20"
+        app:layout_constraintStart_toEndOf="@+id/textView20"
+        app:layout_constraintTop_toTopOf="@+id/textView20"
+        tools:text="Very Poor" />
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/medium"
+        android:text="@string/prediction"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/textView19"
+        app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/medium"
+        android:text="@string/colon"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView22"
+        app:layout_constraintEnd_toEndOf="@+id/textView20"
+        app:layout_constraintStart_toStartOf="@+id/textView20"
+        app:layout_constraintTop_toTopOf="@+id/textView22" />
+
+    <TextView
+        android:id="@+id/prediction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/medium"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView23"
+        app:layout_constraintStart_toEndOf="@+id/textView23"
+        app:layout_constraintTop_toBottomOf="@+id/textView20"
+        tools:text="1.5" />
+
+    <TextView
+        android:id="@+id/textView24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/bold"
+        android:text="@string/notes"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/textView21"
+        app:layout_constraintTop_toBottomOf="@+id/textView22" />
+
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/medium"
+        android:text="@string/level1"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/textView24"
+        app:layout_constraintTop_toBottomOf="@+id/textView24" />
+
+    <TextView
+        android:id="@+id/textView26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/medium"
+        android:text="@string/level2"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/textView25"
+        app:layout_constraintTop_toBottomOf="@+id/textView25" />
+
+    <TextView
+        android:id="@+id/textView27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/medium"
+        android:text="@string/level3"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/textView26"
+        app:layout_constraintTop_toBottomOf="@+id/textView26" />
+
+    <TextView
+        android:id="@+id/textView28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/medium"
+        android:text="@string/level4"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/textView27"
+        app:layout_constraintTop_toBottomOf="@+id/textView27" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/medium"
+        android:text="@string/level5"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/textView28"
+        app:layout_constraintTop_toBottomOf="@+id/textView28" />
+
     <ProgressBar
         android:id="@+id/loadingBar"
         style="?android:attr/progressBarStyle"

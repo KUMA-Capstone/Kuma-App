@@ -26,6 +26,9 @@ import com.capstone.kuma.api.moodResult
 import com.capstone.kuma.databinding.FragmentReportBinding
 import com.capstone.kuma.layout.HomeActivity
 import com.capstone.kuma.layout.ui.check_in.CheckInActivity
+import com.capstone.kuma.layout.ui.report.ReportFragment.Global.averagePrediction
+import com.capstone.kuma.layout.ui.report.ReportFragment.Global.predictionCount
+import com.capstone.kuma.layout.ui.report.ReportFragment.Global.totalPrediction
 import com.capstone.kuma.repo.KumaRepository
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.charts.LineChart
@@ -51,6 +54,12 @@ class ReportFragment : Fragment() {
     private lateinit var factory: ViewModelFactory
     private val mReportViewModel: ReportViewModel by viewModels{
         factory
+    }
+    object Global{
+        var averagePrediction: Float = 0.0f
+        var predictionCount: Int = 0
+        var totalPrediction: Float = 0.0f
+        var isAverageCalculated: Boolean = false
     }
 
     // This property is only valid between onCreateView and
@@ -101,12 +110,39 @@ class ReportFragment : Fragment() {
             val xAxis: XAxis = barchart.xAxis
             barchart.description.isEnabled = false
             xAxis.setDrawLabels(false)
+
             for (moodResult in it) {
                 val datenya = moodResult.date.substring(8).toFloat()
                 Log.d("hasil mood", "$datenya")
                 barentries.add(BarEntry(datenya, moodResult.prediction))
+
+                if (!Global.isAverageCalculated) {
+                    totalPrediction += moodResult.prediction
+                }
             }
-            val bardataSet = BarDataSet(barentries, "Anxiety Level")
+            if (it.isNotEmpty()) {
+                val lastMoodResult = it[it.size - 1]
+                val lastPrediction = lastMoodResult.prediction
+                binding.prediction.text = lastPrediction.toString()
+                if(lastPrediction<1.0){
+                    binding.moodlevel.text = "Very Poor"
+                }else if(lastPrediction<2.0){
+                    binding.moodlevel.text = "Poor"
+                }else if(lastPrediction<3.0){
+                    binding.moodlevel.text = "Neutral"
+                }else if(lastPrediction<4.0){
+                    binding.moodlevel.text = "Good"
+                }else if(lastPrediction<5.0){
+                    binding.moodlevel.text = "Very Good"
+                }
+            }
+
+            predictionCount = it.size
+            averagePrediction = totalPrediction / predictionCount
+
+            Global.isAverageCalculated = true
+
+            val bardataSet = BarDataSet(barentries, "Mood Level")
             bardataSet.setColor(Color.rgb(46, 196, 182))
             val barData = BarData(bardataSet)
             barchart.data = barData

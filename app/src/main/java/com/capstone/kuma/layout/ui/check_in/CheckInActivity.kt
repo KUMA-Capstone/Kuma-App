@@ -92,6 +92,7 @@ class CheckInActivity : AppCompatActivity() {
         return dateFormat.format(currentDate)
     }
     private fun startUpload(loginSession: LoginSession){
+        showLoading(true)
         val dateNow = getCurrentDate()
         val listActivity = binding.listActivity.text.toString()
         val sub_mood = binding.subMood.selectedItem as String
