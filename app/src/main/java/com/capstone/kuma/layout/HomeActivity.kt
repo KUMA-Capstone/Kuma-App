@@ -1,36 +1,26 @@
+@file:Suppress("DEPRECATION")
+
 package com.capstone.kuma.layout
 
-import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.capstone.kuma.LoginSession
 import com.capstone.kuma.R
-import com.capstone.kuma.SessionPreference
-import com.capstone.kuma.ViewModelFactory
-import com.capstone.kuma.auth.LoginActivity
 import com.capstone.kuma.databinding.ActivityHomeBinding
-import com.capstone.kuma.layout.ui.check_in.CheckInActivity.Companion.LOGIN_SESSION
-import com.capstone.kuma.layout.ui.home.HomeViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
-    private lateinit var mSessionPreference: SessionPreference
-    private val factory: ViewModelFactory = ViewModelFactory.getInstance(this)
-    private val mHomeViewModel: HomeViewModel by viewModels{
-        factory
-    }
     private var doubleBackToExitPressedOnce = false
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         if (doubleBackToExitPressedOnce) {
             super.onBackPressed()
@@ -53,7 +43,6 @@ class HomeActivity : AppCompatActivity() {
 
         val navController = findNavController(R.id.nav_host_fragment_activity_home)
 
-        val loginSession = intent.getParcelableExtra<LoginSession>(LOGIN_SESSION) as LoginSession
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.nav_view)
         setupWithNavController(bottomNavigationView, navController)

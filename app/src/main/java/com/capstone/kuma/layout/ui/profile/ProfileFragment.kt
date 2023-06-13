@@ -124,7 +124,7 @@ class ProfileFragment : Fragment() {
     private fun logOut() {
         mSessionPreference.deleteSession()
         Log.d(".HomeActivity", "lihat : ${mSessionPreference.getSession()}")
-        Toast.makeText(requireContext(), "Berhasil Logout", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), "Successfully Logout", Toast.LENGTH_SHORT).show()
         val moveToLogin = Intent(requireActivity(), LoginActivity::class.java)
         startActivity(moveToLogin)
     }

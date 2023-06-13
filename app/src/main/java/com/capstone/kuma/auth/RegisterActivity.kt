@@ -5,14 +5,13 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Patterns
-import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import com.capstone.kuma.ViewModelFactory
 import com.capstone.kuma.databinding.ActivityRegisterBinding
-import com.capstone.kuma.layout.HomeActivity
 
 @Suppress("DEPRECATION")
 class RegisterActivity : AppCompatActivity() {
@@ -38,20 +37,24 @@ class RegisterActivity : AppCompatActivity() {
             val name = binding.name.text.toString().trim()
             val email = binding.email.text.toString().trim()
             val password = binding.password.text.toString().trim()
-            authViewModel.registerLauncher(name, email, password).observe(this,{
-                if(it != null){
-                    Toast.makeText(this, "Register berhasil dilakukan", Toast.LENGTH_SHORT).show()
+            authViewModel.registerLauncher(name, email, password).observe(this) {
+                if (it != null) {
+                    Toast.makeText(this, "Registration is successful", Toast.LENGTH_SHORT).show()
                     val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
                     showLoading(false)
                     startActivity(intent)
                     finish()
-                }else{
+                } else {
                     showLoading(false)
-                    Toast.makeText(this, "Mohon periksa kembali data yang dimasukkan", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this,
+                        "Please check the data entered again",
+                        Toast.LENGTH_SHORT
+                    ).show()
                     startActivity(intent)
                     finish()
                 }
-            })
+            }
         }
 
         binding.toLogin.setOnClickListener {

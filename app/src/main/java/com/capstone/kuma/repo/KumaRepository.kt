@@ -1,8 +1,6 @@
 package com.capstone.kuma.repo
 
 import android.util.Log
-import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.Pager
@@ -10,7 +8,6 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.liveData
 import com.capstone.kuma.LoginSession
-import com.capstone.kuma.SessionPreference
 import com.capstone.kuma.api.ApiConfig
 import com.capstone.kuma.api.ApiService
 import com.capstone.kuma.api.LoginResponse
@@ -18,7 +15,6 @@ import com.capstone.kuma.api.MoodResponse
 import com.capstone.kuma.api.RegisterResponse
 import com.capstone.kuma.api.UpdateResponse
 import com.capstone.kuma.api.moodResult
-import com.capstone.kuma.api.signinResult
 import com.capstone.kuma.data.MoodPagingSource
 import retrofit2.Call
 import retrofit2.Callback
@@ -29,7 +25,6 @@ class KumaRepository(private val apiService: ApiService) {
     val registerResponse = MutableLiveData<RegisterResponse?>()
     val loginResponse = MutableLiveData<LoginResponse?>()
     private lateinit var loginSession: LoginSession
-    private lateinit var mSessionPreference: SessionPreference
 
     fun registerLauncherRepo(name:String, email: String, password:String) {
         Log.d(".RegisterActivity", "$name, $email, $password")
@@ -53,7 +48,7 @@ class KumaRepository(private val apiService: ApiService) {
                         404 -> "${response.code()} : Not Found"
                         else -> "${response.code()} : $response"
                     }
-                    Log.e(".RegisterActivity","$errMess")
+                    Log.e(".RegisterActivity", errMess)
                     registerResponse.postValue(response.body())
                 }
             }
@@ -159,14 +154,14 @@ class KumaRepository(private val apiService: ApiService) {
                     val responseBody = response.body()
                     if (responseBody != null && !responseBody.error) {
                         reportData.postValue(responseBody.moodResult)
-                        Log.d("ReportFragment", "Berhasil woi")
+                        Log.d("ReportFragment", "Berhasil get prediction")
                     }
                 }else{
-                    Log.d("ReportFragment", "Gagal woi")
+                    Log.d("ReportFragment", "Gagal get prediction")
                 }
             }
             override fun onFailure(call: Call<MoodResponse>, t: Throwable) {
-                Log.d("ReportFragment", "Failure woi")
+                Log.d("ReportFragment", "masalah jaringan")
                 Log.d("response", "$t")
             }
         })

@@ -1,7 +1,6 @@
 package com.capstone.kuma.layout.ui.report
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.capstone.kuma.LoginSession
 import com.capstone.kuma.api.moodResult
@@ -12,9 +11,4 @@ class ReportViewModel(private val kumaRepository: KumaRepository) : ViewModel() 
         kumaRepository.setPrediction(loginSession)
         return kumaRepository.getPrediction()
     }
-
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is dashboard Fragment"
-    }
-    val text: LiveData<String> = _text
 }

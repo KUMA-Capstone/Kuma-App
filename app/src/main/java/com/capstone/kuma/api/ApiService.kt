@@ -4,18 +4,13 @@ import android.os.Parcelable
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
-import okhttp3.MultipartBody
-import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.Header
-import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.PUT
-import retrofit2.http.Part
-import retrofit2.http.Path
 import retrofit2.http.Query
 import java.util.Date
 
@@ -92,13 +87,6 @@ data class UpdateResponse(
     val message: String
 )
 
-data class FileUploadResponse(
-    @field:SerializedName("error")
-    val error: Boolean,
-    @field:SerializedName("message")
-    val message: String
-)
-
 data class MoodResponse(
     @field:SerializedName("error")
     val error: Boolean,
@@ -171,12 +159,6 @@ interface ApiService{
         @Field("password") password: String
     ) : Call<UpdateResponse>
 
-    @Multipart
-    @POST("api/user-image")
-    fun uploadImage(
-        @Header("Authorization") Authorization: String,
-        @Part file: MultipartBody.Part
-    ): Call<FileUploadResponse>
 
     @GET("api/get-mood-byId")
     suspend fun getMoodByID(

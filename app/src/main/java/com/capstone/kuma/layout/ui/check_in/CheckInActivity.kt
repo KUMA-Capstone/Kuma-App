@@ -1,24 +1,22 @@
+@file:Suppress("DEPRECATION")
+
 package com.capstone.kuma.layout.ui.check_in
 
-import android.Manifest
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.MultiAutoCompleteTextView
 import android.widget.Spinner
-import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
-import androidx.core.view.isNotEmpty
 import com.capstone.kuma.LoginSession
 import com.capstone.kuma.R
 import com.capstone.kuma.api.ApiConfig
@@ -100,7 +98,6 @@ class CheckInActivity : AppCompatActivity() {
 
         val newList = listActivity.replace(",", " |")
 
-        Log.d("slicedlist", "$newList")
         val uploadCheckIn = ApiConfig.getApiService().upload("Bearer ${loginSession.token}", "${loginSession.userId}", dateNow, sub_mood, newList, story)
 
         uploadCheckIn.enqueue(object : Callback<UploadResponse> {
@@ -129,7 +126,7 @@ class CheckInActivity : AppCompatActivity() {
             override fun onFailure(call: Call<UploadResponse>, t: Throwable) {
                 showLoading(false)
                 Log.d("CheckIn", "$t")
-                Toast.makeText(this@CheckInActivity, "Error when Check In", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@CheckInActivity, "There is a problem with your connection, try again", Toast.LENGTH_SHORT).show()
             }
         })
     }

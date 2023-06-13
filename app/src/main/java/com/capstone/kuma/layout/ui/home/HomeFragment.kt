@@ -12,8 +12,8 @@ import com.capstone.kuma.LoginSession
 import com.capstone.kuma.SessionPreference
 import com.capstone.kuma.databinding.FragmentHomeBinding
 import com.capstone.kuma.layout.HomeActivity
-import com.capstone.kuma.layout.ui.history.HistoryActivity
 import com.capstone.kuma.layout.ui.check_in.CheckInActivity
+import com.capstone.kuma.layout.ui.history.HistoryActivity
 import com.capstone.kuma.layout.ui.report.ReportFragment
 import com.capstone.kuma.layout.ui.tips.TipsActivity
 import java.text.DecimalFormat

@@ -50,21 +50,29 @@ class LoginActivity : AppCompatActivity() {
             showLoading(true)
             val email = binding.email.text.toString().trim()
             val password = binding.password.text.toString().trim()
-            authViewModel.loginLauncher(email, password).observe(this,{
-                if(it != null){
-                    if (it.error == true){
+            authViewModel.loginLauncher(email, password).observe(this) {
+                if (it != null) {
+                    if (it.error == true) {
                         showLoading(false)
-                        Toast.makeText(this, "${it.message}", Toast.LENGTH_SHORT).show()
-                    }else{
-                        saveSession(it.signinResult.userId,it.signinResult.name,it.signinResult.token)
+                        Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
+                    } else {
+                        saveSession(
+                            it.signinResult.userId,
+                            it.signinResult.name,
+                            it.signinResult.token
+                        )
                     }
-                }else{
+                } else {
                     showLoading(false)
-                    Toast.makeText(this, "Login gagal, Mohon periksa kembali data", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this,
+                        "Login failed, Please check the data again",
+                        Toast.LENGTH_SHORT
+                    ).show()
                     startActivity(intent)
                     finish()
                 }
-            })
+            }
         }
 
         binding.toRegister.setOnClickListener {
