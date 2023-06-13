@@ -1,3 +1,122 @@
 <resources>
     <string name="app_name">Kuma</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <!--splash screen-->
+    <string name="logokuma">Logo Kuma</string>
+    <string name="bottomcircle">Bottom Circle</string>
+
+    <!--login register-->
+    <string name="welcome">Welcome!</string>
+    <string name="login">LOGIN</string>
+    <string name="loginto">Login to Continue</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="dont_have">Don\'t have an account yet?<font color="#2EC4B6"> Register Here</font></string>
+    <string name="create">Please create an account</string>
+    <string name="name">Name</string>
+    <string name="register">REGISTER</string>
+    <string name="have_acc">Already have an account?<font color="#2EC4B6"> Login Here</font></string>
+    <string name="error_name_required">Name cannot be empty</string>
+    <string name="error_email_required">Invalid email</string>
+    <string name="error_short_password">Password minimum 8 characters</string>
+    <string name="error_empty_password">Password cannot be empty</string>
+
+    <!--home report profile-->
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_report">Report</string>
+    <string name="title_profile">Profile</string>
+    <string name="background">Background</string>
+    <string name="save_changes">Save Changes</string>
+    <string name="actions">Actions</string>
+    <string name="duckyan">Duck Yan</string>
+    <string name="emergency">Emergency Contact</string>
+    <string name="report_problem">Report a problem</string>
+    <string name="logout">Logout</string>
+    <string name="desc_checkin">Describe your day today in an intriguing and detailed manner</string>
+    <string name="check_in">Check In</string>
+    <string name="woku">Woku Game</string>
+    <string name="desc_woku">Woku can help you deal with your worries in a positive and creative way</string>
+    <string name="breath">Breathing Exercise</string>
+    <string name="desc_breath">Regulated breathing enhances lung function and reduces stress or anxiety</string>
+    <string name="panic">Panic Button</string>
+    <string name="desc_panic">Use in emergencies for immediate assistance</string>
+    <string name="tips">Tips</string>
+    <string name="autistic_children_s_parents_support_face_challenges_and_increase_development">Parental support increases the development of autistic children</string>
+    <string name="history">History</string>
+    <string name="desc_history">Contains data regarding check in history that has been done</string>
+
+    <!--check in-->
+    <string name="activity">Activity</string>
+    <string name="complete_all_questions">Complete all questions</string>
+    <string name="finish">FINISH</string>
+    <string name="how_are_you_feeling_today">What is the current emotional state of your child</string>
+    <string name="what_will_be_your_chosen_activity">What activities is your child going to engage in</string>
+    <string name="type_here">Type here</string>
+    <string name="tell_us_in_more_detail_about_your_child_activities">Tell us in more detail about your child activities</string>
+    <string name="check_in_date">Check In Date</string>
+    <string name="name_history">Name</string>
+    <string name="submood">Submood</string>
+    <string name="activity_history">Activity</string>
+    <string name="story">Story</string>
+    <string name="colon">:</string>
+    <string name="overview">Last Prediction</string>
+    <string name="prediction">Prediction</string>
+    <string name="notes">Notes</string>
+    <string name="level1">0.0 - 1.0 = Very Poor</string>
+    <string name="level2">1.1 - 2.0 = Poor</string>
+    <string name="level3">2.1 - 3.0 = Neutral</string>
+    <string name="level4">3.1 - 4.0 = Good</string>
+    <string name="level5">4.1 - 5.0 = Very Good</string>
+
+    <!--data tips title-->
+    <string-array name="tips_title">
+        <item>How to Raise Autistic Children with Loving Love</item>
+        <item>The Right Way to Educate and Raise Autistic Children</item>
+        <item>How to Accompany Autistic Children Effectively</item>
+    </string-array>
+
+    <!--data tips desc-->
+    <string-array name="tips_desc">
+        <item>Raising a child with autism can be a unique and rewarding experience that requires patience,
+            understanding, and, most importantly, unconditional love. Autism spectrum disorder (ASD) is a
+            developmental condition that affects social interactions, communication, and behavior. As parents,
+            it is crucial to create a nurturing and supportive environment that enables autistic children to
+            thrive and reach their full potential. This essay aims to explore effective strategies for raising
+            autistic children with love, empathy, and compassion. Raising autistic children with love requires a
+            commitment to understanding, acceptance, and support. By embracing unconditional love, fostering effective
+            communication, creating a structured environment, practicing empathy, supporting individualized education,
+            and fostering social connections, parents can provide the loving care that autistic children need to thrive.
+            With patience, understanding, and a deep well of love, we can empower autistic individuals to reach their full
+            potential and lead fulfilling lives.</item>
+
+        <item>Raising and educating autistic children require a compassionate and individualized approach that recognizes
+            their unique needs and abilities. Autism spectrum disorder (ASD) is a developmental condition that affects social
+            interaction, communication, and behavior. As parents and educators, it is crucial to adopt effective strategies
+            that promote the holistic development of autistic children. This essay explores key principles and practices that
+            can help in providing the right education and support for autistic children. Educating and raising autistic children
+            require an approach that respects their individuality, fosters their strengths, and supports their challenges.
+            By embracing neurodiversity, implementing individualized education plans, utilizing structured and visual supports,
+            promoting communication and social skills, creating sensory-friendly environments, fostering collaboration and inclusion,
+            and focusing on strengths and interests, we can provide the right education and support for autistic children. With these
+            principles and practices, we can empower them to reach their full potential and lead fulfilling lives. </item>
+
+        <item>Accompanying autistic children requires a deep understanding, empathy, and tailored support. Autism spectrum
+            disorder (ASD) is a developmental condition that affects social interaction, communication, and behavior.
+            As caregivers, educators, and individuals involved in the lives of autistic children, it is essential to implement
+            effective strategies that promote their well-being, development, and inclusion. This essay explores key approaches
+            and techniques for effectively accompanying autistic children. Effectively accompanying autistic children requires a
+            comprehensive approach that encompasses empathy, clear communication, predictable routines, sensory-friendly environments,
+            individualized support, social engagement, and self-advocacy. By implementing these strategies, we can create inclusive
+            and supportive environments that nurture their unique strengths, promote their well-being, and help them reach their
+            full potential. Ultimately, effective companionship empowers autistic children to lead fulfilling and meaningful lives. </item>
+    </string-array>
+
+    <!--data tips img-->
+    <integer-array name="tips_img">
+        <item>@drawable/img_tips1</item>
+        <item>@drawable/img_tips2</item>
+        <item>@drawable/img_tips3</item>
+    </integer-array>
+
 </resources>

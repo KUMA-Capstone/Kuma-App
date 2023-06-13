@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".layout.ui.profile.ProfileFragment">
+
+    <ImageView
+        android:id="@+id/background_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:contentDescription="@string/background"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_profile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ImageContrastCheck" />
+
+    <RelativeLayout
+        android:id="@+id/relative"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:layout_marginTop="95dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/bg_home_dot"
+            tools:ignore="ContentDescription,ImageContrastCheck" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/profileImageView"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/profile_animation"
+            tools:ignore="ImageContrastCheck" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/medium"
+        android:paddingTop="20dp"
+        android:text="@string/name"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/name_change"
+        app:layout_constraintTop_toBottomOf="@+id/relative"
+        tools:ignore="RtlSymmetry" />
+
+    <com.capstone.kuma.custom.NameChangeText
+        android:id="@+id/name_change"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/name"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/relative"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/medium"
+        android:paddingTop="20dp"
+        android:text="@string/password"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/name_change"
+        tools:ignore="RtlSymmetry" />
+
+    <com.capstone.kuma.custom.PasswordChangeText
+        android:id="@+id/password"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="@+id/relative"
+        app:layout_constraintStart_toStartOf="@+id/relative"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
+
+    <com.capstone.kuma.custom.ButtonPrimary
+        android:id="@+id/update_button"
+        android:layout_width="200dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:enabled="false"
+        android:text="@string/save_changes"
+        app:layout_constraintEnd_toEndOf="@+id/relative"
+        app:layout_constraintStart_toStartOf="@+id/relative"
+        app:layout_constraintTop_toBottomOf="@+id/password"
+        tools:ignore="TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/medium"
+        android:paddingTop="20dp"
+        android:text="@string/actions"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/update_button"
+        tools:ignore="RtlSymmetry" />
+
+    <com.capstone.kuma.custom.ButtonHome
+        android:id="@+id/report"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="15dp"
+        android:drawableStart="@drawable/ic_report_problem"
+        android:drawablePadding="15dp"
+        android:fontFamily="@font/regular"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:text="@string/report_problem"
+        android:textAlignment="viewStart"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        tools:ignore="VisualLintButtonSize" />
+
+    <com.capstone.kuma.custom.ButtonHome
+        android:id="@+id/logout"
+        android:layout_marginTop="10dp"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:textSize="14sp"
+        android:textAlignment="viewStart"
+        android:drawablePadding="15dp"
+        android:fontFamily="@font/regular"
+        android:text="@string/logout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/report"
+        android:drawableStart="@drawable/ic_logout"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        tools:ignore="VisualLintButtonSize" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
