@@ -16,6 +16,12 @@ This project will create an application called Kuma (Koneksi untuk Memahami Anak
 - [Navigation Fragment](https://developer.android.com/guide/navigation/get-started) - Component of the Android Jetpack Navigation Component which is used to manage navigation between fragments in your Android Kotlin application
 - [Live Data](https://developer.android.com/topic/libraries/architecture/livedata?hl=id) - Class provided by Android Jetpack for easy use of observable data in Android Kotlin apps
 
+## How to Clone This Project
+1. Clone this repository to your device
+2. Open In Android studio
+3. Build Project
+4. Run and debugging the project on your AVD emulator
+
 ## Application Development Contributor
 
 #### C23-PS366
